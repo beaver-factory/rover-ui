@@ -42,7 +42,7 @@
 .photo {
   background-color: green;
   height: calc(100vh - var(--unit));
-  width: 100%;
+  width: calc(100vw - calc(2 * var(--unit)));
 }
 
 </style>
