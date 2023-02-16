@@ -1,47 +1,7 @@
 import {defineStore} from 'pinia'
 import {ref} from 'vue'
-
-interface Camera {
-    id: number;
-    name: string;
-    rover_id: number;
-    full_name: string;
-}
-
-interface Rover {
-    id: number;
-    name: string;
-    landing_date: string;
-    launch_date: string;
-    status: string;
-}
-
-interface RoverPhoto {
-    id: number;
-    sol: number;
-    camera: Camera;
-    img_src: string;
-    earth_date: string;
-    rover: Rover;
-}
-
-interface PhotoSummary {
-    sol: number;
-    earth_date: string;
-    total_photos: number;
-    cameras: string[];
-}
-
-interface Manifest {
-    name: string;
-    landing_date: string;
-    launch_date: string;
-    status: string;
-    max_sol: number;
-    max_date: string;
-    total_photos: number;
-    photos: PhotoSummary[];
-}
+import { fetchManifest, fetchPhotos } from '../api';
+import { RoverPhoto, Manifest } from '../api/interfaces';
 
 export const useRoverStore = defineStore('rover', () => {
     const photos = ref<RoverPhoto[]>([]);
@@ -62,9 +22,35 @@ export const useRoverStore = defineStore('rover', () => {
     const photos_err = ref<boolean>(false);
     const photoIndex = ref<number>(0);
 
-    const setManifest = (rover: string):void => {};
-    const setPhotos = (rover: string, date: string, cameras: string|undefined) => {};
-    const setIndex = (photoIndex: number) => {};
+    const setManifest = async (rover: string):Promise<void> => {
+        try {
+            manifest_loading.value = true;
+            manifest.value = await fetchManifest(rover);
+            manifest_err.value = false;
+        }
+        catch {
+            manifest_err.value = true;
+        }
+        finally {
+            manifest_loading.value = false;
+        }
+    };
+    const setPhotos = async (rover: string, date: string, cameras?: string): Promise<void> => {
+        try {
+            photos_loading.value = true;
+            photos.value = await fetchPhotos(rover, date, cameras);
+            photos_err.value = false;
+        }
+        catch {
+            photos_err.value = true;
+        }
+        finally {
+            photos_loading.value = false;
+        }
+    };
+    const setIndex = (index: number): void => {
+        photoIndex.value = index;
+    };
 
     return {photos, manifest, manifest_loading, manifest_err, photos_loading, photos_err, photoIndex, setManifest, setPhotos, setIndex};
 })
