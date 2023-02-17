@@ -1,6 +1,5 @@
 <template>
     <BaseUnit :height="6" :width="'calc(100vw - calc(2 * var(--unit)))'" :borderBottom="true" class="main_gallery">
-        <div></div>
             <button class="nav_button" @click="() => {handleClick(-1)}" :disabled="isDisabledLeft"><i class="arrow left" :class="{disabled: isDisabledLeft}"></i></button>
             <div class="gallery_item">
                 <p>Camera: {{ cam_loaded }}</p>
@@ -13,7 +12,7 @@
 <script setup lang="ts">
 import BaseUnit from './BaseUnit.vue';
 import { useRoverStore } from '../stores/roverStore';
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ComputedRef } from 'vue';
 
 
 const roverStore = useRoverStore();
@@ -22,14 +21,14 @@ onMounted(async () => {
   await roverStore.setPhotos('curiosity', '2023-2-3');
 })
 
-const isDisabledLeft = computed(() => {
+const isDisabledLeft: ComputedRef<boolean> = computed(():boolean => {
     if (roverStore.photoIndex === 0) {
         return true;
     }
     return false;
 })
 
-const isDisabledRight = computed(() => {
+const isDisabledRight: ComputedRef<boolean> = computed(():boolean => {
     if (roverStore.photoIndex === roverStore.photos.length - 1) {
         return true;
     }
@@ -37,14 +36,14 @@ const isDisabledRight = computed(() => {
 })
 
 
-const img_loaded = computed(() => {
+const img_loaded: ComputedRef<string> = computed((): string => {
     if (roverStore.photos[0]) {
         return roverStore.photos_loading ? "src/assets/loading_img.jpeg" : roverStore.photos[roverStore.photoIndex].img_src;
     }
     return "src/assets/loading_img.jpeg" 
 })
 
-const cam_loaded = computed(() => {
+const cam_loaded: ComputedRef<string> = computed((): string => {
     if (roverStore.photos[0]) {
         return roverStore.photos_loading ? "" : roverStore.photos[roverStore.photoIndex].camera.full_name;
     }
@@ -85,13 +84,12 @@ const handleClick = (index: number):void => {
   max-width: calc(100vw - (4 * var(--unit)));
   min-width: calc(100vw - (4 * var(--unit)));
   object-fit: contain;
-  cursor: pointer;
   padding: var(--padding);
 }
 
 .arrow {
   border: solid white;
-  border-width: 0 3px 3px 0;
+  border-width: 0 4px 4px 0;
   display: inline-block;
   padding: 3px;
   width: 20px;
@@ -110,6 +108,6 @@ const handleClick = (index: number):void => {
 
 .disabled {
     border: solid #C7C7C7;
-    border-width: 0 3px 3px 0;
+    border-width: 0 4px 4px 0;
 }
 </style>
