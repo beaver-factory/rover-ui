@@ -5,7 +5,7 @@ import Viewer from './components/Viewer.vue'
 </script>
 
 <template>
-  <div class="banner"><Banner></Banner></div>
+  <Banner/>
 
   <div class="app">
     <div class="sidebar">
@@ -19,11 +19,6 @@ import Viewer from './components/Viewer.vue'
 </template>
 
 <style scoped>
-.banner {
-  background-color: red;
-  height: var(--unit);
-  width: 100vw;
-}
 
 .app {
   display: flex;
