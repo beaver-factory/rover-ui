@@ -19,15 +19,15 @@
 // TODO: agree on consistent component documentation method
 
 interface BaseUnitProps {
-    height: number | string; // number = multiple of base unit, string = override
-    width: number | string; // number = multiple of base unit, string = override
-    paddingUnits: number;
-    borderTop: boolean;
-    borderBottom: boolean;
-    borderLeft: boolean;
-    borderRight: boolean;
+    height?: number | string; // number = multiple of base unit, string = override
+    width?: number | string; // number = multiple of base unit, string = override
+    paddingUnits?: number;
+    borderTop?: boolean;
+    borderBottom?: boolean;
+    borderLeft?: boolean;
+    borderRight?: boolean;
     // TODO: restrict bg color to enum - only colors from r2 branding
-    backgroundColor: string;
+    backgroundColor?: string;
 }
 
 const props = withDefaults(defineProps<BaseUnitProps>(), {
