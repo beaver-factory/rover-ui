@@ -1,8 +1,12 @@
 <template>
-    <BaseUnit :height="6" :width="'calc(100vw - calc(2 * var(--unit)))'" :borderBottom="true">
-        <button @click="() => {handleClick(-1)}" :disabled="roverStore.photoIndex === 0"><i class="arrow left"></i></button>
-        <img :src="img_loaded" :alt="`from a NASA Mars rover`">
-        <button @click.prevent="() => {handleClick(1)}" :disabled="roverStore.photoIndex === roverStore.photos.length"><i class="arrow right"></i></button>
+    <BaseUnit :height="6" :width="'calc(100vw - calc(2 * var(--unit)))'" :borderBottom="true" class="main_gallery">
+        <div></div>
+            <button class="nav_button" @click="() => {handleClick(-1)}" :disabled="isDisabledLeft"><i class="arrow left" :class="{disabled: isDisabledLeft}"></i></button>
+            <div class="gallery_item">
+                <p>Camera: {{ cam_loaded }}</p>
+                <img :src="img_loaded" :alt="`from a NASA Mars rover`" class="main_img">
+            </div>
+            <button class="nav_button" @click.prevent="() => {handleClick(1)}" :disabled="isDisabledRight"><i class="arrow right" :class="{disabled: isDisabledRight}"></i></button>
     </BaseUnit>
 </template>
 
@@ -18,11 +22,33 @@ onMounted(async () => {
   await roverStore.setPhotos('curiosity', '2023-2-3');
 })
 
+const isDisabledLeft = computed(() => {
+    if (roverStore.photoIndex === 0) {
+        return true;
+    }
+    return false;
+})
+
+const isDisabledRight = computed(() => {
+    if (roverStore.photoIndex === roverStore.photos.length - 1) {
+        return true;
+    }
+    return false;
+})
+
+
 const img_loaded = computed(() => {
     if (roverStore.photos[0]) {
         return roverStore.photos_loading ? "src/assets/loading_img.jpeg" : roverStore.photos[roverStore.photoIndex].img_src;
     }
     return "src/assets/loading_img.jpeg" 
+})
+
+const cam_loaded = computed(() => {
+    if (roverStore.photos[0]) {
+        return roverStore.photos_loading ? "" : roverStore.photos[roverStore.photoIndex].camera.full_name;
+    }
+    return "" 
 })
 
 const handleClick = (index: number):void => {
@@ -32,11 +58,44 @@ const handleClick = (index: number):void => {
 </script>
 
 <style>
+.main_gallery {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav_button {
+    width: var(--unit);
+    height: calc(5 * var(--unit));
+    background-color: inherit;
+    border: 0;
+}
+
+.gallery_item {
+  min-height: calc(4 * var(--unit));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.main_img {
+  max-height: calc(4 * var(--unit));
+  min-height: calc(4 * var(--unit));
+  max-width: calc(100vw - (4 * var(--unit)));
+  min-width: calc(100vw - (4 * var(--unit)));
+  object-fit: contain;
+  cursor: pointer;
+  padding: var(--padding);
+}
+
 .arrow {
-  border: solid black;
+  border: solid white;
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
+  width: 20px;
+  height: 20px;
 }
 
 .left {
@@ -49,4 +108,8 @@ const handleClick = (index: number):void => {
   -webkit-transform: rotate(-45deg);
 }
 
+.disabled {
+    border: solid #C7C7C7;
+    border-width: 0 3px 3px 0;
+}
 </style>
