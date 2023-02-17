@@ -53,10 +53,10 @@ const padding = `calc(${props.paddingUnits} * var(--padding))`;
 
 const border = "solid white 1px";
 
-const borderTopWidth: string = props.borderTop ? "1px" : "0px";
-const borderBottomWidth: string = props.borderBottom ? "1px" : "0px";
-const borderLeftWidth: string = props.borderLeft ? "1px" : "0px";
-const borderRightWidth: string = props.borderRight ? "1px" : "0px";
+const borderTopWidth = props.borderTop ? "1px" : "0px";
+const borderBottomWidth = props.borderBottom ? "1px" : "0px";
+const borderLeftWidth = props.borderLeft ? "1px" : "0px";
+const borderRightWidth = props.borderRight ? "1px" : "0px";
 
 const { backgroundColor } = props;
 
