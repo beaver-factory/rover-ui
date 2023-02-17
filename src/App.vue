@@ -19,11 +19,6 @@ import Viewer from './components/Viewer.vue'
 </template>
 
 <style scoped>
-.banner {
-  background-color: red;
-  height: var(--unit);
-  width: 100vw;
-}
 
 .app {
   display: flex;
