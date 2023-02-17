@@ -19,6 +19,6 @@ export const fetchPhotos = async (
 }
 
 export const fetchManifest = async (rover: string): Promise<Manifest> => {
-  const response = await marsApi.get(`/manifest/curiosity/?api_key=${apiKey}`)
+  const response = await marsApi.get(`/manifests/${rover}?api_key=${apiKey}`)
   return response.data.photo_manifest
 }
