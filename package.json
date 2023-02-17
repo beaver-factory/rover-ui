@@ -10,6 +10,7 @@
     "env_setup": "bash env_setup.sh"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^4.0.0",
     "axios": "^1.3.3",
     "pinia": "^2.0.30",
     "vue": "^3.2.45"
