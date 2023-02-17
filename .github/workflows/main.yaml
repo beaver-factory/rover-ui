@@ -27,3 +27,13 @@ jobs:
           # This part is also where you can pass other options, for example:
           prettier_options: --check **/*.{ts,vue,json,html,md,css}
           only_changed: True
+  linting:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: install
+        run: npm install
+      - name: lint
+        run: npm run lint
