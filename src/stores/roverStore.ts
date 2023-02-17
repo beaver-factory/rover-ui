@@ -27,6 +27,7 @@ export const useRoverStore = defineStore('rover', () => {
 
   const setManifest = async (rover: string = 'opportunity'): Promise<void> => {
     const checkedManifest = readFromManifestCache(rover)
+
     if (checkedManifest) {
       manifest.value = checkedManifest
     } else {

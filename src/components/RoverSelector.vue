@@ -12,7 +12,7 @@
       v-model="formStore.selectedRover"
       @change="handleSelect"
     >
-      <option value="curiosity"><p>Curiosity</p></option>
+      <option value="curiosity">Curiosity</option>
       <option value="opportunity">Opportunity</option>
       <option value="spirit">Spirit</option>
     </select>
@@ -54,11 +54,5 @@ select {
   padding: 0 0.3rem;
   background-color: #004f72;
   color: white;
-}
-
-p {
-  background-color: white;
-  height: 100%;
-  width: 100%;
 }
 </style>
