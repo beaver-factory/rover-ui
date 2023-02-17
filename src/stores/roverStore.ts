@@ -21,7 +21,7 @@ export const useRoverStore = defineStore('rover', () => {
   const photos_err = ref<boolean>(false)
   const photoIndex = ref<number>(0)
 
-  const setManifest = async (rover: string): Promise<void> => {
+  const setManifest = async (rover: string = 'opportunity'): Promise<void> => {
     try {
       manifest_loading.value = true
       manifest.value = await fetchManifest(rover)
