@@ -6,5 +6,5 @@
 
 :root {
   --unit: calc(100vh / 9);
-  --padding: 20px;
+  --padding: 10px;
 }
