@@ -12,6 +12,7 @@ When pushing to `main` or creating a pull request to `main`, github actions will
 If the changed files meet the prettier rules:
 
 - the check will pass and show as such on the PR
+- you can ensure the changed files will meet the prettier rules by either enabling a prettier extension in your editor, or running the command `npx prettier -w <file>` for each of the files that have been changd.
 
 If they do not:
 
