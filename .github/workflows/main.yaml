@@ -29,7 +29,7 @@ jobs:
           only_changed: True
   linting:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: checkout
         uses: actions/checkout@v2
