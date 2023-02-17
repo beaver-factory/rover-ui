@@ -12,7 +12,7 @@
       v-model="formStore.selectedRover"
       @change="handleSelect"
     >
-      <option value="curiosity">Curiosity</option>
+      <option value="curiosity"><p>Curiosity</p></option>
       <option value="opportunity">Opportunity</option>
       <option value="spirit">Spirit</option>
     </select>
@@ -22,6 +22,7 @@
 <script lang="ts" setup>
 import { useFormStore } from '../stores/formStore'
 import { useRoverStore } from '../stores/roverStore'
+
 import BaseUnit from './BaseUnit.vue'
 
 const roverStore = useRoverStore()
@@ -53,5 +54,11 @@ select {
   padding: 0 0.3rem;
   background-color: #004f72;
   color: white;
+}
+
+p {
+  background-color: white;
+  height: 100%;
+  width: 100%;
 }
 </style>
