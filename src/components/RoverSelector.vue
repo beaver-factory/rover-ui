@@ -16,8 +16,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useFormStore } from '../stores/formStore'
-import { useRoverStore } from '../stores/roverStore'
+import useFormStore  from '../stores/formStore'
+import useRoverStore  from '../stores/roverStore'
 
 import BaseUnit from './BaseUnit.vue'
 
