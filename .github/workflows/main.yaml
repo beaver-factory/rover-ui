@@ -25,6 +25,6 @@ jobs:
         uses: creyD/prettier_action@v4.2
         with:
           # This part is also where you can pass other options, for example:
-          dry: True
+          prettier_options: --write **/*.{ts,vue,json,html,md,css}
           only_changed: True
-          prettier_options: --check **/*.{ts,vue,json,html,md,css}
+          same_commit: True
