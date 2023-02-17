@@ -36,22 +36,22 @@ const handleSelect = (): void => {
 
 <style scoped>
 select {
-  /* width: min-content; */
   width: 100%;
-  padding: 0.5rem;
-  background-color: #004f72;
-  color: white;
-  border: 1px solid white;
+  height: 100%;
+  padding: 0.4rem;
   font-size: 1rem;
+  color: white;
+  background-color: #004f72;
+  border: 1px solid white;
 }
 
 .overlapping-label {
   position: absolute;
-  font-size: 0.7rem;
-  margin-top: -0.45rem;
+  font-size: 0.6rem;
+  margin-top: -0.4rem;
   margin-left: 0.3rem;
+  padding: 0 0.3rem;
   background-color: #004f72;
   color: white;
-  padding: 0 0.5rem;
 }
 </style>
