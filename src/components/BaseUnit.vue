@@ -1,37 +1,63 @@
 <template>
-    <div class="base_outer" :style="{ height, width , backgroundColor, padding }">
+    <div :style="{
+            height,
+            width ,
+            backgroundColor,
+            padding,
+            border,
+            borderTopWidth,
+            borderBottomWidth,
+            borderLeftWidth,
+            borderRightWidth,
+        }">
         <slot></slot>
     </div>
 </template>
 
 <script setup lang="ts">
 
-interface BaseUnitProps {
-    heightUnits: number;
-    widthUnits: number;
-    paddingUnits: number;
+// TODO: agree on consistent component documentation method
 
-    // TODO: restrict bg color to only be colors from r2 branding
+interface BaseUnitProps {
+    height: number | string; // number = multiple of base unit, string = override
+    width: number | string; // number = multiple of base unit, string = override
+    paddingUnits: number;
+    borderTop: boolean;
+    borderBottom: boolean;
+    borderLeft: boolean;
+    borderRight: boolean;
+    // TODO: restrict bg color to enum - only colors from r2 branding
     backgroundColor: string;
 }
 
-const props = withDefaults( defineProps<BaseUnitProps>(), {
-    heightUnits: 1,
-    widthUnits: 1,
+const props = withDefaults(defineProps<BaseUnitProps>(), {
+    height: 1,
+    width: 1,
     paddingUnits: 1,
     backgroundColor: "#004F72",
+    borderTop: false,
+    borderBottom: false,
+    borderLeft: false,
+    borderRight: false,
 });
 
-const height = `calc(${props.heightUnits} * var(--unit))`;
-const width = `calc(${props.widthUnits} * var(--unit))`;
-const padding = `calc(${props.paddingUnits} * var(--padding))`
+const height = typeof props.height === "number"
+    ? `calc(${props.height} * var(--unit))`
+    : props.height
+
+const width = typeof props.width === "number"
+    ? `calc(${props.width} * var(--unit))`
+    : props.width
+
+const padding = `calc(${props.paddingUnits} * var(--padding))`;
+
+const border = "solid white 1px";
+
+const borderTopWidth: string = props.borderTop ? "1px" : "0px";
+const borderBottomWidth: string = props.borderBottom ? "1px" : "0px";
+const borderLeftWidth: string = props.borderLeft ? "1px" : "0px";
+const borderRightWidth: string = props.borderRight ? "1px" : "0px";
+
+const { backgroundColor } = props;
 
 </script>
-
-<style>
-
-.base_outer {
-    border: solid white 1px;
-}
-
-</style>

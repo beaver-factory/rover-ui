@@ -1,5 +1,5 @@
 <template>
-  <BaseUnit>
+  <BaseUnit :width="'100vw'" :border-bottom="true">
       <div>banner</div>
   </BaseUnit>
 </template>

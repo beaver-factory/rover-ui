@@ -5,7 +5,7 @@ import Viewer from './components/Viewer.vue'
 </script>
 
 <template>
-  <div class="banner"><Banner></Banner></div>
+  <Banner></Banner>
 
   <div class="app">
     <div class="sidebar">
