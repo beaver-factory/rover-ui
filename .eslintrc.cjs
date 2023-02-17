@@ -21,6 +21,6 @@ module.exports = {
     parser: "@typescript-eslint/parser"
   },
   plugins: ['vue', '@typescript-eslint'],
-  rules: {},
+  rules: {"vue/multi-word-component-names": 0, "@typescript-eslint/no-unused-vars": 1, "vue/no-setup-props-destructure": 1},
   ignorePatterns: ['vite.config.ts'],
 }
