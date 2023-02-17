@@ -2,6 +2,10 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { fetchManifest, fetchPhotos } from '../api'
 import { RoverPhoto, Manifest } from '../api/interfaces'
+import {
+  readFromManifestCache,
+  writeToManifestCache,
+} from '../utils/manifestCache'
 
 export const useRoverStore = defineStore('rover', () => {
   const photos = ref<RoverPhoto[]>([])
@@ -21,15 +25,22 @@ export const useRoverStore = defineStore('rover', () => {
   const photos_err = ref<boolean>(false)
   const photoIndex = ref<number>(0)
 
-  const setManifest = async (rover: string): Promise<void> => {
-    try {
-      manifest_loading.value = true
-      manifest.value = await fetchManifest(rover)
-      manifest_err.value = false
-    } catch {
-      manifest_err.value = true
-    } finally {
-      manifest_loading.value = false
+  const setManifest = async (rover: string = 'opportunity'): Promise<void> => {
+    const checkedManifest = readFromManifestCache(rover)
+
+    if (checkedManifest) {
+      manifest.value = checkedManifest
+    } else {
+      try {
+        manifest_loading.value = true
+        manifest.value = await fetchManifest(rover)
+        writeToManifestCache(rover, manifest.value)
+        manifest_err.value = false
+      } catch {
+        manifest_err.value = true
+      } finally {
+        manifest_loading.value = false
+      }
     }
   }
   const setPhotos = async (
