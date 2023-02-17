@@ -1,21 +1,17 @@
 <template>
-  <BaseUnit
-    :height="1"
-    :width="2"
-    :padding-units="1.5"
-    :border-bottom="true"
-    :border-right="true"
-  >
-    <label class="overlapping-label" for="rover-select">Rover</label>
-    <select
-      id="roverSelect"
-      v-model="formStore.selectedRover"
-      @change="handleSelect"
-    >
-      <option value="curiosity">Curiosity</option>
-      <option value="opportunity">Opportunity</option>
-      <option value="spirit">Spirit</option>
-    </select>
+  <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
+    <div class="selectContainer">
+      <label class="overlapping-label" for="rover-select">Rover</label>
+      <select
+        id="roverSelect"
+        v-model="formStore.selectedRover"
+        @change="handleSelect"
+      >
+        <option value="curiosity">Curiosity</option>
+        <option value="opportunity">Opportunity</option>
+        <option value="spirit">Spirit</option>
+      </select>
+    </div>
   </BaseUnit>
 </template>
 
@@ -38,18 +34,24 @@ const handleSelect = (): void => {
 <style scoped>
 select {
   width: 100%;
-  height: 100%;
-  padding: 0.4rem;
+  padding: 0.7rem;
   font-size: 1rem;
   color: white;
   background-color: #004f72;
   border: 1px solid white;
 }
 
+.selectContainer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .overlapping-label {
   position: absolute;
   font-size: 0.6rem;
-  margin-top: -0.4rem;
+  margin-top: -2rem;
   margin-left: 0.3rem;
   padding: 0 0.3rem;
   background-color: #004f72;
