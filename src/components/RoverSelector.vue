@@ -51,7 +51,7 @@ select {
 .overlapping-label {
   position: absolute;
   font-size: 0.6rem;
-  margin-top: -2rem;
+  margin-top: -2.8rem;
   margin-left: 0.3rem;
   padding: 0 0.3rem;
   background-color: #004f72;
