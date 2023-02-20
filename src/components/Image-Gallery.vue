@@ -21,7 +21,10 @@
       <p class="img_desc">Camera: {{ camLoaded }}</p>
       <img :src="imgLoaded" :alt="`from a NASA Mars rover`" class="main_img" />
       <p v-if="loaded" class="img_desc">Current photo:</p>
-      <p v-else class="img_desc">Current photo: {{roverStore.photoIndex + 1}} / {{roverStore.photos.length}}</p>
+      <p v-else class="img_desc">
+        Current photo: {{ roverStore.photoIndex + 1 }} /
+        {{ roverStore.photos.length }}
+      </p>
     </div>
     <button
       class="nav_button"
