@@ -3,11 +3,9 @@
     <div v-if="!roverStore.manifestLoading">
       <p>
         <strong>{{ roverStore.manifest.name }}</strong>
-        <span v-if="isRoverActive"> has been </span
-        ><span v-else> was </span>active for
+        {{ hasBeenOrWas }} active for
         <strong>{{ roverStore.manifest.max_sol }}</strong> solar days on Mars.
-        During this time, the rover <span v-if="isRoverActive"> has taken </span
-        ><span v-else> took </span> a total of
+        During this time, the rover {{ hasTakenOrTook }} a total of
         <strong>{{ roverStore.manifest.total_photos }}</strong> photos.
       </p>
     </div>
@@ -23,9 +21,13 @@ import useFormStore from '../stores/formStore'
 const roverStore = useRoverStore()
 const formStore = useFormStore()
 
-const isRoverActive: ComputedRef<boolean> = computed(
-  (): boolean => formStore.selectedRover === 'curiosity'
-)
+const hasBeenOrWas: ComputedRef<string> = computed((): string => {
+  return formStore.selectedRover === 'curiosity' ? ' has been ' : ' was '
+})
+
+const hasTakenOrTook: ComputedRef<string> = computed((): string => {
+  return formStore.selectedRover === 'curiosity' ? ' has taken ' : ' took '
+})
 </script>
 
 <style scoped>
