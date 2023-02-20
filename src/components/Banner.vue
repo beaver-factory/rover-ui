@@ -7,12 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-import BaseUnit from './BaseUnit.vue';
-
+import BaseUnit from './BaseUnit.vue'
 </script>
 
 <style scoped>
-
 .logo-container {
   height: 100%;
   display: flex;
@@ -22,5 +20,4 @@ import BaseUnit from './BaseUnit.vue';
 .banner-logo {
   width: calc((2 * var(--unit)) - (2 * var(--padding)));
 }
-
 </style>
