@@ -1,7 +1,7 @@
 <template>
   <BaseUnit
     class="thumbnails-container"
-    :height="2"
+    :height="1"
     :padding-units="0"
     width="calc(100vw - calc(2 * var(--unit)))"
   >
@@ -11,7 +11,6 @@
       :key="i"
       :class="{ selected: i == photoIndex }"
       :background-color="''"
-      :height="1"
       :border-top="true"
       :border-right="true"
       :padding-units="0.5"
@@ -52,7 +51,7 @@ const { photoIndex, photosLoading } = storeToRefs(roverStore)
   background-color: #0083cb;
 }
 .thumbnail:hover {
-  background-color: #c7c7c7;
+  background-color: #ffffff;
   transition: 0.3s;
 }
 
