@@ -42,9 +42,9 @@
 </template>
 
 <script setup lang="ts">
-import BaseUnit from './BaseUnit.vue'
-import { useRoverStore } from '../stores/roverStore'
 import { onMounted, computed, ComputedRef } from 'vue'
+import BaseUnit from './BaseUnit.vue'
+import useRoverStore from '../stores/roverStore'
 
 const roverStore = useRoverStore()
 
@@ -52,13 +52,13 @@ onMounted(async () => {
   await roverStore.setPhotos('curiosity', '2023-2-3')
 })
 
-const loaded: ComputedRef<boolean> = computed((): boolean => {
-  return roverStore.photos[0] ? false : true
-})
+const loaded: ComputedRef<boolean> = computed(
+  (): boolean => !roverStore.photos[0]
+)
 
 const imgLoaded: ComputedRef<string> = computed((): string => {
   if (roverStore.photos[0]) {
-    return roverStore.photos_loading
+    return roverStore.photosLoading
       ? 'src/assets/loading_img.jpeg'
       : roverStore.photos[roverStore.photoIndex].img_src
   }
@@ -67,7 +67,7 @@ const imgLoaded: ComputedRef<string> = computed((): string => {
 
 const camLoaded: ComputedRef<string> = computed((): string => {
   if (roverStore.photos[0]) {
-    return roverStore.photos_loading
+    return roverStore.photosLoading
       ? ''
       : roverStore.photos[roverStore.photoIndex].camera.full_name
   }
