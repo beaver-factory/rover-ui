@@ -5,7 +5,7 @@
         id="dp"
         :key="calendarKey"
         inline
-        :disabled="roverStore.manifest_loading"
+        :disabled="roverStore.manifestLoading"
         :enable-time-picker="false"
         :min-date="minDate"
         :max-date="maxDate"
@@ -29,8 +29,8 @@
 import BaseUnit from './BaseUnit.vue'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
-import { useRoverStore } from '../stores/roverStore'
-import { useFormStore } from '../stores/formStore'
+import useRoverStore from '../stores/roverStore'
+import useFormStore from '../stores/formStore'
 import { watch, ref, computed } from 'vue'
 
 const roverStore = useRoverStore()
