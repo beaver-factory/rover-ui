@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  prettier:
+  ci:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +22,14 @@ jobs:
           fetch-depth: 0
 
       - name: Prettify code
-        uses: creyD/prettier_action@v4.2
+        uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
           prettier_options: --check **/*.{ts,vue,json,html,md,css}
           only_changed: True
+
+      - name: Install
+        run: npm install
+
+      - name: Linting
+        run: npm run lint

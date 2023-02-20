@@ -7,7 +7,7 @@ import {
   writeToManifestCache,
 } from '../utils/manifestCache'
 
-export const useRoverStore = defineStore('rover', () => {
+const useRoverStore = defineStore('rover', () => {
   const photos = ref<RoverPhoto[]>([])
   const manifest = ref<Manifest>({
     name: 'Curiosity',
@@ -19,27 +19,27 @@ export const useRoverStore = defineStore('rover', () => {
     total_photos: 631505,
     photos: [],
   })
-  const manifest_loading = ref<boolean>(false)
-  const manifest_err = ref<boolean>(false)
-  const photos_loading = ref<boolean>(false)
-  const photos_err = ref<boolean>(false)
+  const manifestLoading = ref<boolean>(false)
+  const manifestErr = ref<boolean>(false)
+  const photosLoading = ref<boolean>(false)
+  const photosErr = ref<boolean>(false)
   const photoIndex = ref<number>(0)
 
-  const setManifest = async (rover: string = 'opportunity'): Promise<void> => {
+  const setManifest = async (rover = 'opportunity'): Promise<void> => {
     const checkedManifest = readFromManifestCache(rover)
 
     if (checkedManifest) {
       manifest.value = checkedManifest
     } else {
       try {
-        manifest_loading.value = true
+        manifestLoading.value = true
         manifest.value = await fetchManifest(rover)
         writeToManifestCache(rover, manifest.value)
-        manifest_err.value = false
+        manifestErr.value = false
       } catch {
-        manifest_err.value = true
+        manifestErr.value = true
       } finally {
-        manifest_loading.value = false
+        manifestLoading.value = false
       }
     }
   }
@@ -49,13 +49,13 @@ export const useRoverStore = defineStore('rover', () => {
     cameras?: string
   ): Promise<void> => {
     try {
-      photos_loading.value = true
+      photosLoading.value = true
       photos.value = await fetchPhotos(rover, date, cameras)
-      photos_err.value = false
+      photosErr.value = false
     } catch {
-      photos_err.value = true
+      photosErr.value = true
     } finally {
-      photos_loading.value = false
+      photosLoading.value = false
     }
   }
   const setIndex = (index: number): void => {
@@ -65,13 +65,15 @@ export const useRoverStore = defineStore('rover', () => {
   return {
     photos,
     manifest,
-    manifest_loading,
-    manifest_err,
-    photos_loading,
-    photos_err,
+    manifestLoading,
+    manifestErr,
+    photosLoading,
+    photosErr,
     photoIndex,
     setManifest,
     setPhotos,
     setIndex,
   }
 })
+
+export default useRoverStore
