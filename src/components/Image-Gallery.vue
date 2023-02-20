@@ -1,8 +1,7 @@
 <template>
   <BaseUnit
-    :height="6"
+    :height="7"
     :width="'calc(100vw - calc(2 * var(--unit)))'"
-    :borderBottom="true"
     class="main_gallery"
   >
     <button
