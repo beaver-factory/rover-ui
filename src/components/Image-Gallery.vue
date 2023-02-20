@@ -13,12 +13,15 @@
         }
       "
       :disabled="loaded"
+      aria-labelledby="Back an Image"
     >
       <i class="arrow left" :class="{ disabled: loaded }"></i>
     </button>
     <div class="gallery_item">
       <p class="img_desc">Camera: {{ camLoaded }}</p>
       <img :src="imgLoaded" :alt="`from a NASA Mars rover`" class="main_img" />
+      <p v-if="loaded" class="img_desc">Current photo:</p>
+      <p v-else class="img_desc">Current photo: {{roverStore.photoIndex + 1}} / {{roverStore.photos.length}}</p>
     </div>
     <button
       class="nav_button"
@@ -28,6 +31,7 @@
         }
       "
       :disabled="loaded"
+      aria-labelledby="Forward an Image"
     >
       <i class="arrow right" :class="{ disabled: loaded }"></i>
     </button>
@@ -83,7 +87,7 @@ const handleClick = (index: number): void => {
 
 .nav_button {
   width: var(--unit);
-  height: calc(5 * var(--unit));
+  height: calc(6 * var(--unit));
   background-color: inherit;
   border: 0;
 }
@@ -97,7 +101,10 @@ const handleClick = (index: number): void => {
 }
 
 .img_desc {
-  padding: calc(2 * var(--padding));
+  height: var(--unit);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .main_img {
