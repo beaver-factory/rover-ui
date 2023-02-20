@@ -1,5 +1,5 @@
 <template>
-  <ImageGallery></ImageGallery>
+  <ImageGallery />
 </template>
 
 <script lang="ts" setup>

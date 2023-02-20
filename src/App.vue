@@ -12,7 +12,7 @@ import Viewer from './components/Viewer.vue'
       <Sidebar></Sidebar>
     </div>
 
-    <Viewer></Viewer>
+    <Viewer />
   </div>
 </template>
 
