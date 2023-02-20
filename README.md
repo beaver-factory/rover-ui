@@ -15,7 +15,7 @@ To format all files produced from `npm run format_check`, execute `npm run forma
 
 In this repo, ESLint with TypeScript support is used for linting. The current setup uses the Airbnb config with an extra package for TypeScript support ([found here](https://www.npmjs.com/package/eslint-config-airbnb-typescript)) with a few custom rules. Any formatting from the config is ignored and left up to Prettier instead.
 
-To run the linting script, use the command
+The CI workflow is set up to run on a push or pull request to `main`. We don't currently have a pre-commit hook, so to check your code will pass the check run the linting script beforehand using the command
 
 ```
 npm run lint
