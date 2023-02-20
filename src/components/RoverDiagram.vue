@@ -31,7 +31,7 @@ const selectedRoverDiagram: ComputedRef<string> = computed((): string =>
 }
 
 .rover_diagram {
-  max-height: calc(2 * var(--unit));
+  max-height: calc(1.8 * var(--unit));
   max-width: calc(1.8 * var(--unit));
 }
 </style>
