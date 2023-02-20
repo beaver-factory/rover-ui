@@ -70,6 +70,21 @@ const selectedDate = (calendarDates: Date): string => {
   align-items: center;
 }
 
+.dp__theme_light:focus {
+  border-radius: 0;
+}
+
+.dp__overlay,
+.dp__overlay_container,
+.dp__container_flex,
+.dp__button {
+  background-color: #004f72;
+}
+
+.dp__overlay_container {
+  border: 1px solid white;
+}
+
 .dp-custom-menu {
   font-size: 1rem;
   border: none;
@@ -79,27 +94,64 @@ const selectedDate = (calendarDates: Date): string => {
   max-height: 100%;
 }
 
-.dp__active_date {
+.dp__active_date,
+.dp__overlay_cell_active {
   background: #8c0e56;
+  box-shadow: 0px 2px 3px rgb(49, 3, 45);
 }
 
-.dp__today {
-  border: 1px solid #8c0e56;
+.dp__overlay_cell {
+  color: white;
+}
+
+.dp__overlay_cell_disabled,
+.dp__overlay_cell_disabled:hover {
+  background-color: #004f72;
+  color: #004f72;
+  pointer-events: none;
 }
 
 .dp-custom-cell {
-  height: 0.8rem;
+  height: 1rem;
   width: 1.5rem;
   color: white;
+}
+
+.dp__cell_offset {
+  color: rgb(192, 186, 186);
+}
+
+.dp__inner_nav {
+  height: 1rem;
+  width: 1.5rem;
+  border-radius: 10%;
+}
+
+.dp__inner_nav_disabled,
+.dp__inner_nav_disabled:hover {
+  background-color: #004f72;
+}
+
+.dp__month_year_select {
+  height: 1rem;
+  color: white;
+}
+
+.dp__month_year_row {
+  height: 1.5rem;
 }
 
 .dp__cell_disabled {
   color: #036994;
 }
+.dp__calendar_header {
+  height: 1rem;
+  padding-top: 0;
+}
 
 .dp__calendar_header_item {
   height: 1rem;
   width: 1.5rem;
-  padding-bottom: 1rem;
+  padding: 0;
 }
 </style>
