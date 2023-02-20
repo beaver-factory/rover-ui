@@ -45,9 +45,9 @@ const selectedDate = ref<Date>(new Date())
 watch(
   () => roverStore.manifest.name,
   (oldRover, newRover) => {
-    //curr rerender
     if (oldRover !== newRover) {
       selectedDate.value = minDate.value
+      //force rerender
       calendarKey.value += 1
     }
   }
@@ -59,7 +59,6 @@ const changeDate = (): void => {
 
 const highlightDate = (newDate: Date): string => {
   if (newDate.toISOString().split('T')[0] === formStore.selectedDate) {
-    console.log(formStore.selectedDate)
     return 'selected-date'
   } else {
     return ''
