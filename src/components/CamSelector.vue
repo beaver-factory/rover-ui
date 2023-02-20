@@ -2,51 +2,59 @@
   <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
     <div class="selectContainer">
       <label class="overlapping-label" for="camera-select">Camera</label>
-      <select
-        id="camera-select"
-        v-model="formStore.selectedCam"
-        @change="handleSelect"
-      >
-        <option value="">All</option>
-        <option v-for="cam in availableCams">{{ cam }}</option>
+      <select id="camera-select" v-model="selectedCam" @change="handleSelect">
+        <option v-for="cam in availableCams" :value="cam">{{ cam }}</option>
       </select>
     </div>
-    {{ availableCams }}
   </BaseUnit>
 </template>
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { watch, ref } from 'vue'
-import { useFormStore } from '../stores/formStore'
-import { useRoverStore } from '../stores/roverStore'
+import { Manifest } from '../api/interfaces'
+import useFormStore from '../stores/formStore'
+import useRoverStore from '../stores/roverStore'
 
 import BaseUnit from './BaseUnit.vue'
 
 const roverStore = useRoverStore()
 const formStore = useFormStore()
 
-roverStore.setManifest('curiosity')
-formStore.selectedDate = '2023-2-3'
-
 const { manifest } = storeToRefs(roverStore)
 const { selectedRover, selectedDate, selectedCam } = storeToRefs(formStore)
-const availableCams = ref<string[]>([])
+const availableCams = ref<string[]>(['All'])
 
-const findCams = () => {
-  manifest.value.photos.filter((day) => {
-    day.earth_date === formStore.selectedDate
-    availableCams.value = day.cameras
-  })
+const findCams = (manifest: Manifest, selectedDate: string): void => {
+  console.log('finding cams')
+
+  let selectedDayManifest = manifest.photos.filter(
+    (day) => day.earth_date === selectedDate
+  )
+  if (selectedDayManifest.length) {
+    availableCams.value = ['All', ...selectedDayManifest[0].cameras]
+  } else {
+    availableCams.value = ['None available']
+  }
 }
-findCams()
 
-watch([selectedRover, selectedDate], () => {
-  findCams()
+findCams(manifest.value, formStore.selectedDate)
+
+watch([selectedDate, manifest], () => {
+  findCams(manifest.value, formStore.selectedDate)
+  selectedCam.value = availableCams.value[0]
 })
 
 const handleSelect = (): void => {
-  roverStore.setPhotos(selectedRover, selectedDate, selectedCam)
+  if (selectedCam.value === 'All') {
+    roverStore.setPhotos(selectedRover.value, selectedDate.value)
+  } else {
+    roverStore.setPhotos(
+      selectedRover.value,
+      selectedDate.value,
+      selectedCam.value
+    )
+  }
 }
 </script>
 
