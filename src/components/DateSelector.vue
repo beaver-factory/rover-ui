@@ -40,7 +40,8 @@ const calendarKey = ref<number>(0)
 const minDate = computed<Date>(() => new Date(roverStore.manifest.landing_date))
 const maxDate = computed<Date>(() => new Date(roverStore.manifest.max_date))
 
-const chosenDate = ref<Date>(new Date())
+// default date setting, for initial API call
+const chosenDate = ref<Date>(new Date('2023-01-01'))
 
 watch(
   () => roverStore.manifest.name,
@@ -56,6 +57,7 @@ watch(
 const changeDate = (): void => {
   // eslint-disable-next-line
   formStore.selectedDate = chosenDate.value.toISOString().split('T')[0]
+  roverStore.setPhotos(formStore.selectedRover, formStore.selectedDate)
 }
 
 const highlightDate = (newDate: Date): string => {
