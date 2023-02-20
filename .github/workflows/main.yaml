@@ -27,4 +27,4 @@ jobs:
           # This part is also where you can pass other options, for example:
           prettier_options: --check **/*.{ts,vue,json,html,md,css}
           only_changed: True
-          clean_node_folder: False
+          # clean_node_folder: False
