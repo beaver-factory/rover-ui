@@ -39,16 +39,20 @@ const calendarKey = ref<number>(0)
 const minDate = computed<Date>(() => new Date(roverStore.manifest.landing_date))
 const maxDate = computed<Date>(() => new Date(roverStore.manifest.max_date))
 
-watch(roverStore, () => {
-  calendarKey.value += 1
-})
+watch(
+  () => roverStore.manifest.name,
+  (oldRover, newRover) => {
+    //force rerender
+    if (oldRover !== newRover) calendarKey.value += 1
+  }
+)
 
 const changeDate = (newDate: Date): void => {
   if (newDate) formStore.selectedDate = newDate.toISOString().split('T')[0]
 }
 
-const selectedDate = (calendarDates: Date): string => {
-  if (calendarDates.toISOString().split('T')[0] === formStore.selectedDate) {
+const selectedDate = (newDate: Date): string => {
+  if (newDate.toISOString().split('T')[0] === formStore.selectedDate) {
     return 'selected-date'
   } else {
     return ''
@@ -81,11 +85,6 @@ const selectedDate = (calendarDates: Date): string => {
   border: 1px solid white;
 }
 
-.dp__overlay_cell_disabled,
-.dp__overlay_cell_disabled:hover {
-  display: none;
-}
-
 /* ------ PRIMARY SELECTOR ------- */
 
 .dp-custom-menu {
@@ -100,7 +99,6 @@ const selectedDate = (calendarDates: Date): string => {
 .dp__calendar_row {
   margin: 0;
 }
-
 /* ------ CELLS ------ */
 
 .dp__active_date,
@@ -109,15 +107,24 @@ const selectedDate = (calendarDates: Date): string => {
   border: 1px solid white;
   border-radius: 0;
   padding: 3px;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-.dp__active_date,
-.dp__overlay_cell_active:hover {
+.dp__overlay_cell_pad {
   border-radius: 0;
+  padding: 3px;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.dp__overlay_cell {
-  color: white;
+.dp__overlay_cell_pad:hover {
+  border-radius: 0;
 }
 
 .dp-custom-cell {
@@ -136,8 +143,19 @@ const selectedDate = (calendarDates: Date): string => {
   color: rgb(192, 186, 186);
 }
 
-.dp__cell_disabled {
-  color: #036994;
+.dp__overlay_cell {
+  color: white;
+}
+
+.dp__cell_disabled,
+.dp__overlay_cell_disabled {
+  background-color: #004f72;
+  color: #015e86;
+}
+
+.dp__overlay_cell_disabled:hover {
+  background-color: #004f72;
+  color: #015e86;
 }
 
 /* ------ MONTH/YEAR ------ */
