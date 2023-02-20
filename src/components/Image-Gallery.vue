@@ -92,7 +92,9 @@ const handleClick = (index: number): void => {
   width: var(--unit);
   height: calc(6 * var(--unit));
   background-color: inherit;
-  border: 0;
+  border: none;
+  border-top: 1px white solid;
+  border-bottom: 1px white solid;
 }
 
 .gallery_item {
