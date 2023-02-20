@@ -5,7 +5,7 @@ import Viewer from './components/Viewer.vue'
 </script>
 
 <template>
-  <Banner/>
+  <Banner />
 
   <div class="app">
     <div class="sidebar">
@@ -19,7 +19,6 @@ import Viewer from './components/Viewer.vue'
 </template>
 
 <style scoped>
-
 .app {
   display: flex;
 }
