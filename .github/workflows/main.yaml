@@ -21,15 +21,15 @@ jobs:
           # This is important to fetch the changes to the previous commit
           fetch-depth: 0
 
-      - name: Install
-        run: npm install
-
       - name: Prettify code
         uses: creyD/prettier_action@v4.3
         with:
           # This part is also where you can pass other options, for example:
           prettier_options: --check **/*.{ts,vue,json,html,md,css}
           only_changed: True
+
+      - name: Install
+        run: npm install
 
       - name: Linting
         run: npm run lint
