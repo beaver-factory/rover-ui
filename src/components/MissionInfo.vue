@@ -23,7 +23,9 @@ import useFormStore from '../stores/formStore'
 const roverStore = useRoverStore()
 const formStore = useFormStore()
 
-const isRoverActive: ComputedRef<boolean> = computed((): boolean => formStore.selectedRover === 'curiosity')
+const isRoverActive: ComputedRef<boolean> = computed(
+  (): boolean => formStore.selectedRover === 'curiosity'
+)
 </script>
 
 <style scoped>
