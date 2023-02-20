@@ -21,13 +21,13 @@ import useFormStore from '../stores/formStore'
 const roverStore = useRoverStore()
 const formStore = useFormStore()
 
-const hasBeenOrWas: ComputedRef<string> = computed((): string => {
-  return formStore.selectedRover === 'curiosity' ? ' has been ' : ' was '
-})
+const hasBeenOrWas: ComputedRef<string> = computed((): string =>
+  formStore.selectedRover === 'curiosity' ? ' has been ' : ' was '
+)
 
-const hasTakenOrTook: ComputedRef<string> = computed((): string => {
-  return formStore.selectedRover === 'curiosity' ? ' has taken ' : ' took '
-})
+const hasTakenOrTook: ComputedRef<string> = computed((): string =>
+  formStore.selectedRover === 'curiosity' ? ' has taken ' : ' took '
+)
 </script>
 
 <style scoped>
