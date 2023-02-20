@@ -39,9 +39,10 @@ const calcProgress = (
 }
 
 watch([() => roverStore.manifest.name, () => formStore.selectedDate], () => {
+  const { max_date: maxDate, landing_date: landingDate } = roverStore.manifest
   missionProgress.value = calcProgress(
-    roverStore.manifest.max_date,
-    roverStore.manifest.landing_date,
+    maxDate,
+    landingDate,
     formStore.selectedDate
   )
 })
