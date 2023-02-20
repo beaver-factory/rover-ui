@@ -1,6 +1,6 @@
 <template>
   <RoverSelector></RoverSelector>
-  <!-- <DateSelector></DateSelector> -->
+  <DateSelector></DateSelector>
   <MissionProgress></MissionProgress>
   <CamSelector></CamSelector>
   <!-- rover diagram will live here -->
