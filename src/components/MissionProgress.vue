@@ -65,7 +65,6 @@ label {
 
 ::-webkit-progress-bar {
   width: 100%;
-  height: 20px;
   border-radius: 0;
   border: 1px solid white;
   background-color: #004f72;
@@ -74,14 +73,13 @@ label {
 /* Firefox */
 progress::-moz-progress-bar {
   width: 100%;
-  height: 20px;
   border-radius: 0;
   border: 1px solid white;
   background: white;
 }
+
 ::-moz-progress-bar {
   width: 100%;
-  height: 20px;
   border-radius: 0;
   border: 1px solid white;
   background-color: #004f72;
