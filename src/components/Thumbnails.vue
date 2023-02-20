@@ -20,6 +20,7 @@
       <img
         class="thumbnail-img"
         :src="photos_loading ? 'src/assets/loading_img.jpeg' : photo.img_src"
+        :alt="`a photo take on ${photo.earth_date} by the ${photo.camera} on the ${photo.rover.name} rover`"
       />
     </BaseUnit>
   </BaseUnit>
@@ -31,7 +32,6 @@ import { useRoverStore } from '../stores/roverStore'
 import BaseUnit from './BaseUnit.vue'
 
 const roverStore = useRoverStore()
-roverStore.setPhotos('curiosity', '2023-2-3') // TODO: decide on initial load
 const { photoIndex, photos_loading } = storeToRefs(roverStore)
 </script>
 
@@ -49,7 +49,7 @@ const { photoIndex, photos_loading } = storeToRefs(roverStore)
 }
 
 .selected {
-  background-color: #646464;
+  background-color: #0083cb;
 }
 .thumbnail:hover {
   background-color: #c7c7c7;
@@ -57,7 +57,7 @@ const { photoIndex, photos_loading } = storeToRefs(roverStore)
 }
 
 .selected:hover {
-  background-color: #646464;
+  background-color: #0083cb;
   transition: 0.3s;
 }
 .thumbnail-img {
