@@ -3,7 +3,9 @@
     <div class="selectContainer">
       <label class="overlapping-label" for="camera-select">Camera</label>
       <select id="camera-select" v-model="selectedCam" @change="handleSelect">
-        <option v-for="cam in availableCams" :value="cam">{{ cam }}</option>
+        <option v-for="cam in availableCams" :value="cam" :key="cam">
+          {{ cam }}
+        </option>
       </select>
     </div>
   </BaseUnit>
@@ -25,11 +27,9 @@ const { manifest } = storeToRefs(roverStore)
 const { selectedRover, selectedDate, selectedCam } = storeToRefs(formStore)
 const availableCams = ref<string[]>(['All'])
 
-const findCams = (manifest: Manifest, selectedDate: string): void => {
-  console.log('finding cams')
-
-  let selectedDayManifest = manifest.photos.filter(
-    (day) => day.earth_date === selectedDate
+const findCams = (): void => {
+  const selectedDayManifest = manifest.value.photos.filter(
+    (day) => day.earth_date === selectedDate.value
   )
   if (selectedDayManifest.length) {
     availableCams.value = ['All', ...selectedDayManifest[0].cameras]
@@ -38,10 +38,11 @@ const findCams = (manifest: Manifest, selectedDate: string): void => {
   }
 }
 
-findCams(manifest.value, formStore.selectedDate)
+findCams()
 
 watch([selectedDate, manifest], () => {
-  findCams(manifest.value, formStore.selectedDate)
+  findCams()
+  // eslint-disable-next-line
   selectedCam.value = availableCams.value[0]
 })
 
