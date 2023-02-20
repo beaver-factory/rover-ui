@@ -15,17 +15,15 @@
 </template>
 
 <script lang="ts" setup>
+import { ComputedRef, computed } from 'vue'
 import BaseUnit from './BaseUnit.vue'
 import useRoverStore from '../stores/roverStore'
 import useFormStore from '../stores/formStore'
-import { ComputedRef, computed } from 'vue'
 
 const roverStore = useRoverStore()
 const formStore = useFormStore()
 
-const isRoverActive: ComputedRef<boolean> = computed((): boolean => {
-  return formStore.selectedRover === 'curiosity'
-})
+const isRoverActive: ComputedRef<boolean> = computed((): boolean => formStore.selectedRover === 'curiosity')
 </script>
 
 <style scoped>
