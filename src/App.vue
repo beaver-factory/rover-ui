@@ -9,12 +9,10 @@ import Viewer from './components/Viewer.vue'
 
   <div class="app">
     <div class="sidebar">
-      <Sidebar></Sidebar>
+      <Sidebar />
     </div>
 
-    <div class="photo">
-      <Viewer></Viewer>
-    </div>
+    <Viewer />
   </div>
 </template>
 
@@ -27,11 +25,5 @@ import Viewer from './components/Viewer.vue'
   background-color: blue;
   height: calc(100vh - var(--unit));
   width: calc(2 * var(--unit));
-}
-
-.photo {
-  background-color: green;
-  height: calc(100vh - var(--unit));
-  width: calc(100vw - calc(2 * var(--unit)));
 }
 </style>
