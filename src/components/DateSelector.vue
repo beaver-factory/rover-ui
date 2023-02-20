@@ -14,7 +14,7 @@
         prevent-min-max-navigation
         auto-apply
         six-weeks
-        v-model="selectedDate"
+        v-model="chosenDate"
         @internal-model-change="changeDate"
         calendar-cell-class-name="dp-custom-cell"
         :day-class="highlightDate"
@@ -26,12 +26,12 @@
 </template>
 
 <script lang="ts" setup>
-import BaseUnit from './BaseUnit.vue'
 import VueDatePicker from '@vuepic/vue-datepicker'
+import { watch, ref, computed } from 'vue'
+import BaseUnit from './BaseUnit.vue'
 import '@vuepic/vue-datepicker/dist/main.css'
 import useRoverStore from '../stores/roverStore'
 import useFormStore from '../stores/formStore'
-import { watch, ref, computed } from 'vue'
 
 const roverStore = useRoverStore()
 const formStore = useFormStore()
@@ -40,29 +40,30 @@ const calendarKey = ref<number>(0)
 const minDate = computed<Date>(() => new Date(roverStore.manifest.landing_date))
 const maxDate = computed<Date>(() => new Date(roverStore.manifest.max_date))
 
-const selectedDate = ref<Date>(new Date())
+const chosenDate = ref<Date>(new Date())
 
 watch(
   () => roverStore.manifest.name,
   (oldRover, newRover) => {
     if (oldRover !== newRover) {
-      selectedDate.value = minDate.value
-      //force rerender
+      chosenDate.value = minDate.value
+      //  force rerender
       calendarKey.value += 1
     }
   }
 )
 
 const changeDate = (): void => {
-  formStore.selectedDate = selectedDate.value.toISOString().split('T')[0]
+  // eslint-disable-next-line
+  formStore.selectedDate = chosenDate.value.toISOString().split('T')[0]
 }
 
 const highlightDate = (newDate: Date): string => {
+  let className = ''
   if (newDate.toISOString().split('T')[0] === formStore.selectedDate) {
-    return 'selected-date'
-  } else {
-    return ''
+    className = 'selected-date'
   }
+  return className
 }
 </script>
 
