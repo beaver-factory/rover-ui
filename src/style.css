@@ -8,6 +8,6 @@
 :root {
   --unit: calc(100vh / 9);
   --padding: 20px;
-  --selected-colour: #d69941;
+  --selected-color: #d69941;
   --disabled-opacity: 0.3;
 }
