@@ -12,15 +12,15 @@
 <script setup lang="ts">
 import { computed, ComputedRef } from 'vue'
 import BaseUnit from './BaseUnit.vue'
-import { useFormStore } from '../stores/formStore'
+import useFormStore from '../stores/formStore'
 
 const formStore = useFormStore()
 
-const selectedRoverDiagram: ComputedRef<string> = computed((): string => {
-  return formStore.selectedRover === 'curiosity'
+const selectedRoverDiagram: ComputedRef<string> = computed((): string =>
+  formStore.selectedRover === 'curiosity'
     ? 'src/assets/curiosity.png'
     : 'src/assets/spirit-opportunity.png'
-})
+)
 </script>
 
 <style>
