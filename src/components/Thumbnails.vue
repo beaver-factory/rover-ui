@@ -19,7 +19,7 @@
     >
       <img
         class="thumbnail-img"
-        :src="photos_loading ? 'src/assets/loading_img.jpeg' : photo.img_src"
+        :src="photosLoading ? 'src/assets/loading_img.jpeg' : photo.img_src"
         :alt="`a photo take on ${photo.earth_date} by the ${photo.camera} on the ${photo.rover.name} rover`"
       />
     </BaseUnit>
@@ -28,11 +28,11 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { useRoverStore } from '../stores/roverStore'
+import useRoverStore from '../stores/roverStore'
 import BaseUnit from './BaseUnit.vue'
 
 const roverStore = useRoverStore()
-const { photoIndex, photos_loading } = storeToRefs(roverStore)
+const { photoIndex, photosLoading } = storeToRefs(roverStore)
 </script>
 
 <style scoped>

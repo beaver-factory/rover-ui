@@ -2,7 +2,7 @@
 import Banner from './components/Banner.vue'
 import Sidebar from './components/Sidebar.vue'
 import Viewer from './components/Viewer.vue'
-import { useRoverStore } from './stores/roverStore'
+// import useRoverStore from './stores/roverStore'
 
 // Used to set initial photos array, need to decide on initial data fetching for default view
 // const roverStore = useRoverStore()
