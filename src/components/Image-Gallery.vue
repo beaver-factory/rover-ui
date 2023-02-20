@@ -89,7 +89,7 @@ const handleClick = (index: number): void => {
 }
 
 .gallery_item {
-  min-height: calc(4 * var(--unit));
+  min-height: calc(6 * var(--unit));
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,7 +97,7 @@ const handleClick = (index: number): void => {
 }
 
 .img_desc {
-  padding: var(--padding);
+  padding: calc(2 * var(--padding));
 }
 
 .main_img {
