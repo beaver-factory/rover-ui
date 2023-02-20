@@ -12,10 +12,39 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import useFormStore from '../stores/formStore'
+import useRoverStore from '../stores/roverStore'
 import BaseUnit from './BaseUnit.vue'
 
-const missionProgress = ref<number>(5)
+const missionProgress = ref<number>(0)
+
+const roverStore = useRoverStore()
+const formStore = useFormStore()
+
+const calcProgress = (
+  max: string,
+  landing: string,
+  selected: string
+): number => {
+  const landingDate = new Date(landing).getTime()
+  const lastDate = new Date(max).getTime()
+  const selectedDate = new Date(selected).getTime()
+
+  const completePercent = Math.floor(
+    ((selectedDate - landingDate) / (lastDate - landingDate)) * 100
+  )
+
+  return completePercent <= 100 ? completePercent : 100
+}
+
+watch([() => roverStore.manifest.name, () => formStore.selectedDate], () => {
+  missionProgress.value = calcProgress(
+    roverStore.manifest.max_date,
+    roverStore.manifest.landing_date,
+    formStore.selectedDate
+  )
+})
 </script>
 
 <style scoped>
