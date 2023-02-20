@@ -50,10 +50,17 @@ watch([() => roverStore.manifest.name, () => formStore.selectedDate], () => {
 
 <style scoped>
 .progressContainer {
+  max-width: calc(var(--unit) * 2 - 20px);
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 10px;
+}
+
+label {
+  color: white;
+  font-size: 0.75rem;
 }
 
 ::-webkit-progress-bar {
@@ -87,10 +94,8 @@ progress::-webkit-progress-value {
 
 /* IE10 */
 progress {
-  background-color: #004f72;
-}
-
-progress {
   color: white;
+  width: 100%;
+  background-color: #004f72;
 }
 </style>
