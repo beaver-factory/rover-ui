@@ -90,11 +90,9 @@ const handleClick = (index: number): void => {
 
 .nav_button {
   width: var(--unit);
-  height: calc(6 * var(--unit));
+  height: calc(5 * var(--unit));
   background-color: inherit;
   border: none;
-  border-top: 1px white solid;
-  border-bottom: 1px white solid;
 }
 
 .gallery_item {
