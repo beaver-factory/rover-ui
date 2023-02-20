@@ -68,6 +68,7 @@ label {
   border-radius: 0;
   border: 1px solid white;
   background-color: #004f72;
+  transition: width 0.25s ease-in-out;
 }
 
 /* Firefox */
@@ -76,6 +77,7 @@ progress::-moz-progress-bar {
   border-radius: 0;
   border: 1px solid white;
   background: white;
+  transition: width 0.25s ease-in-out;
 }
 
 ::-moz-progress-bar {
@@ -83,11 +85,13 @@ progress::-moz-progress-bar {
   border-radius: 0;
   border: 1px solid white;
   background-color: #004f72;
+  transition: width 0.25s ease-in-out;
 }
 
 /* Chrome/Safari */
 progress::-webkit-progress-value {
   background: white;
+  transition: width 0.25s ease-in-out;
 }
 
 /* IE10 */
@@ -95,5 +99,6 @@ progress {
   color: white;
   width: 100%;
   background-color: #004f72;
+  transition: width 0.25s ease-in-out;
 }
 </style>
