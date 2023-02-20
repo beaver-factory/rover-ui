@@ -12,13 +12,13 @@
           handleClick(-1)
         }
       "
-      :disabled="isDisabledLeft"
+      :disabled="loaded"
     >
-      <i class="arrow left" :class="{ disabled: isDisabledLeft }"></i>
+      <i class="arrow left" :class="{ disabled: loaded }"></i>
     </button>
     <div class="gallery_item">
-      <p>Camera: {{ cam_loaded }}</p>
-      <img :src="img_loaded" :alt="`from a NASA Mars rover`" class="main_img" />
+      <p>Camera: {{ camLoaded }}</p>
+      <img :src="imgLoaded" :alt="`from a NASA Mars rover`" class="main_img" />
     </div>
     <button
       class="nav_button"
@@ -27,9 +27,9 @@
           handleClick(1)
         }
       "
-      :disabled="isDisabledRight"
+      :disabled="loaded"
     >
-      <i class="arrow right" :class="{ disabled: isDisabledRight }"></i>
+      <i class="arrow right" :class="{ disabled: loaded }"></i>
     </button>
   </BaseUnit>
 </template>
@@ -45,21 +45,11 @@ onMounted(async () => {
   await roverStore.setPhotos('curiosity', '2023-2-3')
 })
 
-const isDisabledLeft: ComputedRef<boolean> = computed((): boolean => {
-  if (roverStore.photoIndex === 0) {
-    return true
-  }
-  return false
+const loaded: ComputedRef<boolean> = computed((): boolean => {
+  return roverStore.photos[0] ? false : true
 })
 
-const isDisabledRight: ComputedRef<boolean> = computed((): boolean => {
-  if (roverStore.photoIndex === roverStore.photos.length - 1) {
-    return true
-  }
-  return false
-})
-
-const img_loaded: ComputedRef<string> = computed((): string => {
+const imgLoaded: ComputedRef<string> = computed((): string => {
   if (roverStore.photos[0]) {
     return roverStore.photos_loading
       ? 'src/assets/loading_img.jpeg'
@@ -68,7 +58,7 @@ const img_loaded: ComputedRef<string> = computed((): string => {
   return 'src/assets/loading_img.jpeg'
 })
 
-const cam_loaded: ComputedRef<string> = computed((): string => {
+const camLoaded: ComputedRef<string> = computed((): string => {
   if (roverStore.photos[0]) {
     return roverStore.photos_loading
       ? ''
@@ -78,7 +68,9 @@ const cam_loaded: ComputedRef<string> = computed((): string => {
 })
 
 const handleClick = (index: number): void => {
-  roverStore.photoIndex += index
+  roverStore.photoIndex =
+    (roverStore.photoIndex + index + roverStore.photos.length) %
+    roverStore.photos.length
 }
 </script>
 
