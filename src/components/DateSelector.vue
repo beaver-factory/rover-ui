@@ -14,9 +14,10 @@
         prevent-min-max-navigation
         auto-apply
         six-weeks
+        v-model="selectedDate"
         @internal-model-change="changeDate"
         calendar-cell-class-name="dp-custom-cell"
-        :day-class="selectedDate"
+        :day-class="highlightDate"
         menu-class-name="dp-custom-menu"
       >
       </VueDatePicker>
@@ -39,20 +40,26 @@ const calendarKey = ref<number>(0)
 const minDate = computed<Date>(() => new Date(roverStore.manifest.landing_date))
 const maxDate = computed<Date>(() => new Date(roverStore.manifest.max_date))
 
+const selectedDate = ref<Date>(new Date())
+
 watch(
   () => roverStore.manifest.name,
   (oldRover, newRover) => {
-    //force rerender
-    if (oldRover !== newRover) calendarKey.value += 1
+    //curr rerender
+    if (oldRover !== newRover) {
+      selectedDate.value = minDate.value
+      calendarKey.value += 1
+    }
   }
 )
 
-const changeDate = (newDate: Date): void => {
-  if (newDate) formStore.selectedDate = newDate.toISOString().split('T')[0]
+const changeDate = (): void => {
+  formStore.selectedDate = selectedDate.value.toISOString().split('T')[0]
 }
 
-const selectedDate = (newDate: Date): string => {
+const highlightDate = (newDate: Date): string => {
   if (newDate.toISOString().split('T')[0] === formStore.selectedDate) {
+    console.log(formStore.selectedDate)
     return 'selected-date'
   } else {
     return ''
