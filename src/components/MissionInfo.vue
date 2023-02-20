@@ -1,16 +1,19 @@
 <template>
   <BaseUnit :width="2" :border-right="true" :border-bottom="true">
-    <p v-if="roverStore.manifest.name === 'Curiosity'">
-      {{ roverStore.manifest.name }} has been active for
-      {{ roverStore.manifest.max_sol }} solar days on Mars. During this time,
-      the rover has taken a total of
-      {{ roverStore.manifest.total_photos }} photos.
-    </p>
-    <p v-else>
-      {{ roverStore.manifest.name }} was active for a total of
-      {{ roverStore.manifest.max_sol }} solar days on Mars. During this time,
-      the rover took a total of {{ roverStore.manifest.total_photos }} photos.
-    </p>
+    <div>
+      <p v-if="roverStore.manifest.name === 'Curiosity'">
+        <strong>{{ roverStore.manifest.name }}</strong> has been active for
+        <strong>{{ roverStore.manifest.max_sol }}</strong> solar days on Mars.
+        During this time, the rover has taken a total of
+        <strong>{{ roverStore.manifest.total_photos }}</strong> photos.
+      </p>
+      <p v-else>
+        <strong>{{ roverStore.manifest.name }}</strong> was active for a total
+        of <strong>{{ roverStore.manifest.max_sol }}</strong> solar days on
+        Mars. During this time, the rover took a total of
+        <strong>{{ roverStore.manifest.total_photos }}</strong> photos.
+      </p>
+    </div>
   </BaseUnit>
 </template>
 
@@ -24,6 +27,11 @@ const roverStore = useRoverStore()
 <style scoped>
 p {
   color: white;
-  font-size: 0.6rem;
+  font-size: 1.2vh;
+}
+div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 </style>
