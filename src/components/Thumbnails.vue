@@ -19,7 +19,7 @@
       <img
         class="thumbnail-img"
         :src="photosLoading ? 'src/assets/loading_img.jpeg' : photo.img_src"
-        :alt="`a photo take on ${photo.earth_date} by the ${photo.camera} on the ${photo.rover.name} rover`"
+        :alt="`a photo taken on ${photo.earth_date} by the ${photo.camera} camera on the ${photo.rover.name} rover`"
       />
     </BaseUnit>
   </BaseUnit>
