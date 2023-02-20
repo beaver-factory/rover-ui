@@ -1,7 +1,9 @@
 <template>
-  <div></div>
+  <Thumbnails></Thumbnails>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Thumbnails from './Thumbnails.vue'
+</script>
 
 <style scoped></style>
