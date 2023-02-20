@@ -17,7 +17,7 @@
       <i class="arrow left" :class="{ disabled: loaded }"></i>
     </button>
     <div class="gallery_item">
-      <p>Camera: {{ camLoaded }}</p>
+      <p class="img_desc">Camera: {{ camLoaded }}</p>
       <img :src="imgLoaded" :alt="`from a NASA Mars rover`" class="main_img" />
     </div>
     <button
@@ -96,13 +96,16 @@ const handleClick = (index: number): void => {
   color: white;
 }
 
+.img_desc {
+  padding: var(--padding);
+}
+
 .main_img {
   max-height: calc(4 * var(--unit));
   min-height: calc(4 * var(--unit));
   max-width: calc(100vw - (4 * var(--unit)));
   min-width: calc(100vw - (4 * var(--unit)));
   object-fit: contain;
-  padding: var(--padding);
 }
 
 .arrow {
