@@ -1,9 +1,9 @@
 <template>
   <RoverSelector></RoverSelector>
   <DateSelector></DateSelector>
-  <MissionProgress></MissionProgress>
   <CamSelector></CamSelector>
   <!-- rover diagram will live here -->
+  <MissionProgress></MissionProgress>
 </template>
 
 <script lang="ts" setup>
