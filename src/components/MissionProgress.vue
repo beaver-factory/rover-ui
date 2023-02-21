@@ -1,14 +1,12 @@
 <template>
   <BaseUnit :height="1" :width="2" :border-top="true" :border-right="true">
-    <div class="progressContainer">
-      <label
-        for="missionProgressBar"
-        :class="{ disabledElement: roverStore.manifestLoading }"
-        >Mission Progress</label
-      >
+    <div
+      class="progressContainer"
+      :class="{ disabledElement: roverStore.manifestLoading }"
+    >
+      <label for="missionProgressBar">Mission Progress</label>
       <progress
         id="missionProgressBar"
-        :class="{ disabledElement: roverStore.manifestLoading }"
         :value="missionProgress"
         max="100"
       ></progress>
