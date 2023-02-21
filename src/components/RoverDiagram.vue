@@ -8,7 +8,7 @@
     <img
       class="rover_diagram"
       :src="selectedRoverDiagram"
-      :class="{ disabledImg: roverStore.manifestLoading }"
+      :class="{ disabledElement: roverStore.manifestLoading }"
     />
   </BaseUnit>
 </template>
@@ -39,9 +39,5 @@ const selectedRoverDiagram: ComputedRef<string> = computed((): string =>
 .rover_diagram {
   max-height: calc(1.8 * var(--unit));
   max-width: calc(1.8 * var(--unit));
-}
-
-.disabledImg {
-  opacity: var(--disabled-opacity);
 }
 </style>

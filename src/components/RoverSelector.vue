@@ -13,6 +13,7 @@
         id="roverSelect"
         v-model="formStore.selectedRover"
         @change="handleSelect"
+        :class="{ disabledElement: roverStore.manifestLoading }"
         :disabled="roverStore.manifestLoading"
       >
         <option value="curiosity">Curiosity</option>
@@ -65,10 +66,6 @@ select {
   background-color: #004f72;
   color: white;
   z-index: 1;
-}
-
-select:disabled {
-  opacity: var(--disabled-opacity);
 }
 
 .disabledLabel {

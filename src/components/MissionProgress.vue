@@ -3,12 +3,12 @@
     <div class="progressContainer">
       <label
         for="missionProgressBar"
-        :class="{ disabledLoad: roverStore.manifestLoading }"
+        :class="{ disabledElement: roverStore.manifestLoading }"
         >Mission Progress</label
       >
       <progress
         id="missionProgressBar"
-        :class="{ disabledLoad: roverStore.manifestLoading }"
+        :class="{ disabledElement: roverStore.manifestLoading }"
         :value="missionProgress"
         max="100"
       ></progress>
@@ -66,10 +66,6 @@ watch([() => roverStore.manifest.name, () => formStore.selectedDate], () => {
 label {
   color: white;
   font-size: 0.75rem;
-}
-
-.disabledLoad {
-  opacity: var(--disabled-opacity);
 }
 
 /* Firefox */
