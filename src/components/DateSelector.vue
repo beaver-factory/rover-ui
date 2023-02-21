@@ -5,7 +5,7 @@
         id="dp"
         :key="calendarKey"
         inline
-        :disabled="roverStore.manifestLoading"
+        :class="{ disabledElement: roverStore.manifestLoading }"
         :enable-time-picker="false"
         :min-date="minDate"
         :max-date="maxDate"
@@ -73,12 +73,6 @@ const highlightDate = (newDate: Date): string => {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.dp__menu_disabled {
-  /* could not use global opacity rule for disabling this component,
-  use transparent color-layer on this div instead */
-  background: #00507293;
 }
 
 .dp__theme_light:focus {
