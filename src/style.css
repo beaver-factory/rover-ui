@@ -12,6 +12,7 @@
   --selected-color: #d69941;
   --disabled-opacity: 0.3;
   --primary-font-color: white;
+  --border: 1px solid white;
 }
 
 /* global classes for handling disabled elements */

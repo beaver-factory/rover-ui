@@ -99,7 +99,7 @@ const handleClick = (index: number): void => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  color: var(--primary-font-color);
 }
 
 .img_desc {

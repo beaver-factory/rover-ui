@@ -89,7 +89,7 @@ const highlightDate = (newDate: Date): string => {
 }
 
 .dp__overlay_container {
-  border: 1px solid white;
+  border: var(--border);
 }
 
 /* ------ PRIMARY SELECTOR ------- */
@@ -111,7 +111,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__active_date,
 .dp__overlay_cell_active {
   background-color: var(--selected-color);
-  border: 1px solid white;
+  border: var(--border);
   border-radius: 0;
   padding: 3px;
   height: 3rem;

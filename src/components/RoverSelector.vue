@@ -45,7 +45,7 @@ select {
   font-size: 1rem;
   color: var(--primary-font-color);
   background-color: var(--background-color);
-  border: 1px solid white;
+  border: var(--border);
 }
 
 .selectContainer {

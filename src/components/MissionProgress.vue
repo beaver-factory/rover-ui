@@ -72,7 +72,7 @@ label {
 progress::-moz-progress-bar {
   width: 100%;
   border-radius: 0;
-  border: 1px solid white;
+  border: var(--border);
   background: white;
   transition: width 0.25s ease-in-out;
 }
@@ -80,7 +80,7 @@ progress::-moz-progress-bar {
 ::-moz-progress-bar {
   width: 100%;
   border-radius: 0;
-  border: 1px solid white;
+  border: var(--border);
   background-color: transparent;
   transition: width 0.25s ease-in-out;
 }
@@ -89,7 +89,7 @@ progress::-moz-progress-bar {
 ::-webkit-progress-bar {
   width: 100%;
   border-radius: 0;
-  border: 1px solid white;
+  border: var(--border);
   background-color: transparent;
   transition: width 0.25s ease-in-out;
 }
