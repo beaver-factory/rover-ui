@@ -72,60 +72,11 @@ const highlightDate = (newDate: Date): string => {
 </script>
 
 <style>
-/* .container {
-  overflow: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
-
-/* .dp__theme_light:focus {
-  border-radius: 0;
-} */
-
 /* .dp__instance_calendar:focus-visible {
   outline: none;
 } */
 
 /* ------ OVERLAY ------ */
-.dp__overlay_container {
-  height: calc(2 * var(--unit) - 2 * var(--padding) - 35px) !important;
-  background-color: #004f72;
-  overflow-y: overlay;
-}
-.dp__overlay {
-  border: 1px solid white !important;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  background-color: #004f72;
-  height: calc(2 * var(--unit) - 2 * var(--padding)) !important;
-  color: white;
-}
-.dp__icon {
-  stroke: #004f72;
-  fill: #004f72;
-}
-.dp__icon:hover {
-  stroke: var(--selected-color);
-  fill: var(--selected-color);
-}
-
-.dp__button,
-.dp__button:hover {
-  background-color: white;
-}
-.dp__overlay_container::-webkit-scrollbar {
-  width: 5px;
-}
-
-.dp__overlay_container::-webkit-scrollbar-track {
-  background-color: inherit;
-}
-
-.dp__overlay_container::-webkit-scrollbar-thumb {
-  background-color: var(--selected-color);
-  box-shadow: 5px;
-}
 
 /* ------ PRIMARY SELECTOR ------- */
 
@@ -216,7 +167,6 @@ const highlightDate = (newDate: Date): string => {
 .dp__active_date,
 .dp__overlay_cell_active {
   background: var(--selected-color);
-  border-radius: 0;
   /* padding: 3px;
   height: 3rem;
   width: 3rem;
@@ -230,7 +180,6 @@ const highlightDate = (newDate: Date): string => {
 }
 
 .dp__overlay_cell_pad {
-  border-radius: 0;
   padding: 8px 0;
   /* padding-top: 3px;
   padding-bottom: 3px; */
@@ -243,7 +192,6 @@ const highlightDate = (newDate: Date): string => {
 }
 
 .dp__overlay_cell_pad:hover {
-  border-radius: 0;
   color: #004f72;
 }
 
@@ -253,10 +201,6 @@ const highlightDate = (newDate: Date): string => {
   padding: 3px;
   margin: 0 2px; */
   color: white;
-}
-
-.dp-custom-cell:hover {
-  border-radius: 0;
 }
 
 .dp__cell_offset {
@@ -291,22 +235,45 @@ const highlightDate = (newDate: Date): string => {
   color: white;
 }
 
-.dp__month_year_select:hover {
-  border-radius: 0;
+/* MONTH YEAR CHOOSER OVERLAY */
+
+.dp__overlay_container {
+  height: calc(2 * var(--unit) - 2 * var(--padding) - 35px) !important;
+  background-color: #004f72;
+  overflow-y: overlay;
+}
+.dp__overlay {
+  border: 1px solid white !important;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #004f72;
+  height: calc(2 * var(--unit) - 2 * var(--padding)) !important;
+  color: white;
 }
 
-/* .dp__month_year_row {
-  height: 1.5rem;
+.dp__icon {
+  stroke: #004f72;
+  fill: #004f72;
+}
+.dp__icon:hover {
+  stroke: var(--selected-color);
+  fill: var(--selected-color);
 }
 
-.dp__calendar_header {
-  height: 1rem;
-  padding-top: 0;
+.dp__button,
+.dp__button:hover {
+  background-color: white;
+}
+.dp__overlay_container::-webkit-scrollbar {
+  width: 0.7vh;
 }
 
-.dp__calendar_header_item {
-  height: 1rem;
-  width: 1.5rem;
-  padding: 0;
-} */
+.dp__overlay_container::-webkit-scrollbar-track {
+  background-color: inherit;
+}
+
+.dp__overlay_container::-webkit-scrollbar-thumb {
+  background-color: var(--selected-color);
+  border: 1px solid #a37331;
+}
 </style>
