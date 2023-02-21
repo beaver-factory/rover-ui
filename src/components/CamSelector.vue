@@ -1,14 +1,10 @@
 <template>
-  <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
-    <div class="selectContainer">
-      <label class="overlapping-label" for="camera-select">Camera</label>
-      <select id="camera-select" v-model="selectedCam" @change="handleSelect">
-        <option v-for="cam in availableCams" :value="cam" :key="cam">
-          {{ cam }}
-        </option>
-      </select>
-    </div>
-  </BaseUnit>
+  <SelectComponent
+    :options="availableCams"
+    id="camera-select"
+    label="Camera"
+    @selected="(selected) => handleSelect(selected)"
+  ></SelectComponent>
 </template>
 
 <script lang="ts" setup>
@@ -17,7 +13,7 @@ import { watch, ref } from 'vue'
 import useFormStore from '../stores/formStore'
 import useRoverStore from '../stores/roverStore'
 
-import BaseUnit from './BaseUnit.vue'
+import SelectComponent from './SelectComponent.vue'
 
 const roverStore = useRoverStore()
 const formStore = useFormStore()
@@ -45,7 +41,8 @@ watch([selectedDate, manifest], () => {
   selectedCam.value = availableCams.value[0]
 })
 
-const handleSelect = (): void => {
+const handleSelect = (selected: string): void => {
+  selectedCam.value = selected
   if (selectedCam.value === 'All') {
     roverStore.setPhotos(selectedRover.value, selectedDate.value)
   } else {
@@ -58,30 +55,4 @@ const handleSelect = (): void => {
 }
 </script>
 
-<style scoped>
-select {
-  width: 100%;
-  padding: 0.7rem;
-  font-size: 1rem;
-  color: white;
-  background-color: #004f72;
-  border: 1px solid white;
-}
-
-.selectContainer {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.overlapping-label {
-  position: absolute;
-  font-size: 0.6rem;
-  margin-top: -2.8rem;
-  margin-left: 0.3rem;
-  padding: 0 0.3rem;
-  background-color: #004f72;
-  color: white;
-}
-</style>
+<style scoped></style>
