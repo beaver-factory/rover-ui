@@ -5,7 +5,7 @@
         id="dp"
         :key="calendarKey"
         inline
-        :disabled="roverStore.manifestLoading"
+        :class="{ disabledElement: roverStore.manifestLoading }"
         :enable-time-picker="false"
         :min-date="minDate"
         :max-date="maxDate"
@@ -91,11 +91,11 @@ const highlightDate = (newDate: Date): string => {
 .dp__overlay_container,
 .dp__container_flex,
 .dp__button {
-  background-color: #004f72;
+  background-color: var(--background-color);
 }
 
 .dp__overlay_container {
-  border: 1px solid white;
+  border: var(--border);
 }
 
 /* ------ PRIMARY SELECTOR ------- */
@@ -103,7 +103,7 @@ const highlightDate = (newDate: Date): string => {
 .dp-custom-menu {
   font-size: 1rem;
   border: none;
-  background-color: #004f72;
+  background-color: var(--background-color);
   min-width: 0;
   min-height: 0;
   max-height: 100%;
@@ -116,8 +116,8 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__active_date,
 .dp__overlay_cell_active {
-  background: #8c0e56;
-  border: 1px solid white;
+  background-color: var(--selected-color);
+  border: var(--border);
   border-radius: 0;
   padding: 3px;
   height: 3rem;
@@ -144,7 +144,7 @@ const highlightDate = (newDate: Date): string => {
   height: 1.3rem;
   width: 1.3rem;
   padding: 3px;
-  color: white;
+  color: var(--primary-font-color);
   margin: 0 2px;
 }
 
@@ -157,17 +157,17 @@ const highlightDate = (newDate: Date): string => {
 }
 
 .dp__overlay_cell {
-  color: white;
+  color: var(--primary-font-color);
 }
 
 .dp__cell_disabled,
 .dp__overlay_cell_disabled {
-  background-color: #004f72;
+  background-color: var(--background-color);
   color: #015e86;
 }
 
 .dp__overlay_cell_disabled:hover {
-  background-color: #004f72;
+  background-color: var(--background-color);
   color: #015e86;
 }
 
@@ -180,12 +180,12 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__inner_nav_disabled,
 .dp__inner_nav_disabled:hover {
-  background-color: #004f72;
+  background-color: var(--background-color);
 }
 
 .dp__month_year_select {
   height: 1rem;
-  color: white;
+  color: var(--primary-font-color);
 }
 
 .dp__month_year_select:hover {
