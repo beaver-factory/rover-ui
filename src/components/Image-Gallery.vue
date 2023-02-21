@@ -41,15 +41,11 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed, ComputedRef } from 'vue'
+import { computed, ComputedRef } from 'vue'
 import BaseUnit from './BaseUnit.vue'
 import useRoverStore from '../stores/roverStore'
 
 const roverStore = useRoverStore()
-
-onMounted(async () => {
-  await roverStore.setPhotos('curiosity', '2023-2-3')
-})
 
 const loaded: ComputedRef<boolean> = computed(
   (): boolean => !roverStore.photos[0]
