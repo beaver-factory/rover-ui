@@ -6,9 +6,11 @@
     class="rover_diagram_container"
   >
     <img
-      class="rover_diagram"
       :src="selectedRoverDiagram"
-      :class="{ disabledElement: roverStore.manifestLoading }"
+      :class="[
+        'rover_diagram',
+        { disabledElement: roverStore.manifestLoading },
+      ]"
     />
   </BaseUnit>
 </template>

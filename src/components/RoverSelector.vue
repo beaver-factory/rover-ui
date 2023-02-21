@@ -1,8 +1,10 @@
 <template>
   <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
     <div
-      class="selectContainer"
-      :class="{ disabledElement: roverStore.manifestLoading }"
+      :class="[
+        'selectContainer',
+        { disabledElement: roverStore.manifestLoading },
+      ]"
     >
       <label id="roverSelectLabel" for="rover-select">Rover</label>
       <select
