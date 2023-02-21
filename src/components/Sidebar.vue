@@ -2,9 +2,9 @@
   <RoverSelector></RoverSelector>
   <MissionInfo></MissionInfo>
   <DateSelector></DateSelector>
-  <MissionProgress></MissionProgress>
   <CamSelector></CamSelector>
   <RoverDiagram></RoverDiagram>
+  <MissionProgress></MissionProgress>
 </template>
 
 <script lang="ts" setup>
