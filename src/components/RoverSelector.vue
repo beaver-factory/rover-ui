@@ -44,7 +44,7 @@ select {
   padding: 0.7rem;
   font-size: 1rem;
   color: var(--primary-font-color);
-  background-color: #004f72;
+  background-color: var(--background-color);
   border: 1px solid white;
 }
 
@@ -61,7 +61,7 @@ select {
   margin-top: -2.8rem;
   margin-left: 0.3rem;
   padding: 0 0.3rem;
-  background-color: #004f72;
+  background-color: var(--background-color);
   z-index: 1;
 }
 
