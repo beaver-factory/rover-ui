@@ -15,15 +15,8 @@
   --border: 1px solid white;
 }
 
-/* global classes for handling disabled elements */
-
+/* global class for handling disabled elements */
 .disabledElement {
   opacity: var(--disabled-opacity);
   pointer-events: none;
-}
-
-/* any label that overlaps a border line */
-.disabledLabel {
-  /* avoiding disabled label having no background while overlapping select border, manually setting text properties */
-  color: rgba(255, 255, 255, 0.27);
 }

@@ -1,18 +1,14 @@
 <template>
   <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
-    <div class="selectContainer">
-      <label
-        id="roverSelectLabel"
-        :class="roverStore.manifestLoading ? 'disabledLabel' : 'enabledLabel'"
-        for="rover-select"
-        >Rover</label
-      >
+    <div
+      class="selectContainer"
+      :class="{ disabledElement: roverStore.manifestLoading }"
+    >
+      <label id="roverSelectLabel" for="rover-select">Rover</label>
       <select
         id="roverSelect"
         v-model="formStore.selectedRover"
         @change="handleSelect"
-        :class="{ disabledElement: roverStore.manifestLoading }"
-        :disabled="roverStore.manifestLoading"
       >
         <option value="curiosity">Curiosity</option>
         <option value="opportunity">Opportunity</option>
@@ -62,10 +58,7 @@ select {
   margin-left: 0.3rem;
   padding: 0 0.3rem;
   background-color: var(--background-color);
-  z-index: 1;
-}
-
-.enabledLabel {
   color: var(--primary-font-color);
+  z-index: 1;
 }
 </style>
