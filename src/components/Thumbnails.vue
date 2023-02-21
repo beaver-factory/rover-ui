@@ -39,6 +39,7 @@ const { photoIndex, photosLoading } = storeToRefs(roverStore)
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  align-content: flex-start;
   overflow-x: scroll;
 }
 
