@@ -23,7 +23,7 @@ const { photos } = storeToRefs(roverStore)
 
 <style scoped>
 p {
-  color: white;
+  color: var(--primary-font-color);
 }
 
 .no-photos {
