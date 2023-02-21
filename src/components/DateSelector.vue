@@ -88,7 +88,7 @@ const highlightDate = (newDate: Date): string => {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #004f72;
-  max-height: calc(2 * var(--unit) - 2 * var(--padding)) !important;
+  height: calc(2 * var(--unit) - 2 * var(--padding)) !important;
   color: white;
 }
 .dp__icon {
@@ -128,9 +128,51 @@ const highlightDate = (newDate: Date): string => {
   max-height: 100%;
 }
 
+.dp__inner_nav > .dp__icon {
+  stroke: white;
+  fill: white;
+  height: 2vh;
+}
+
+.dp__inner_nav > .dp__icon:hover {
+  stroke: var(--selected-color);
+  fill: var(--selected-color);
+}
+
+.dp__inner_nav_disabled > .dp__icon:hover {
+  stroke: white;
+  fill: white;
+}
+
+.dp__inner_nav:hover {
+  background-color: inherit;
+}
+
+.dp__inner_nav_disabled {
+  background-color: inherit;
+  opacity: var(--disabled-opacity);
+}
+
+.dp__month_year_row {
+  height: auto;
+}
 /* .dp__calendar_row {
   margin: 0;
 } */
+
+.dp__cell_inner,
+.dp__calendar_header_item {
+  height: auto;
+  padding: 0;
+  width: calc(calc(2 * var(--unit) - 2 * var(--padding)) / 7);
+  font-size: 0.5rem;
+  color: white;
+}
+
+.dp__month_year_select {
+  font-size: 0.5rem;
+  height: auto;
+}
 /* ------ CELLS ------ */
 
 .dp__active_date,
@@ -229,26 +271,4 @@ const highlightDate = (newDate: Date): string => {
   width: 1.5rem;
   padding: 0;
 } */
-</style>
-<style scoped>
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5vh;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: white;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: var(--selected-color);
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--selected-color);
-}
 </style>
