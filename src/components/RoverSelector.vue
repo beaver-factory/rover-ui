@@ -23,7 +23,6 @@ roverStore.setManifest(formStore.selectedRover)
 
 const handleSelect = (selected: string): void => {
   formStore.selectedRover = selected
-  console.log(formStore.selectedRover)
   roverStore.setManifest(formStore.selectedRover)
 }
 </script>
