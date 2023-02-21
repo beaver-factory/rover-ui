@@ -2,9 +2,8 @@
   <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
     <div class="selectContainer">
       <label
-        :class="
-          roverStore.manifestLoading ? 'disabledLabel' : 'overlapping-label'
-        "
+        id="roverSelectLabel"
+        :class="roverStore.manifestLoading ? 'disabledLabel' : 'enabledLabel'"
         for="rover-select"
         >Rover</label
       >
@@ -56,14 +55,17 @@ select {
   justify-content: center;
 }
 
-.overlapping-label {
+#roverSelectLabel {
   position: absolute;
   font-size: 0.6rem;
   margin-top: -2.8rem;
   margin-left: 0.3rem;
   padding: 0 0.3rem;
   background-color: #004f72;
-  color: var(--primary-font-color);
   z-index: 1;
+}
+
+.enabledLabel {
+  color: var(--primary-font-color);
 }
 </style>

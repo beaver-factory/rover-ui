@@ -25,12 +25,5 @@
 /* any label that overlaps a border line */
 .disabledLabel {
   /* avoiding disabled label having no background while overlapping select border, manually setting text properties */
-  position: absolute;
-  font-size: 0.6rem;
-  margin-top: -2.8rem;
-  margin-left: 0.3rem;
-  padding: 0 0.3rem;
-  background-color: #004f72;
   color: rgba(255, 255, 255, 0.27);
-  z-index: 1;
 }
