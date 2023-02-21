@@ -2,10 +2,9 @@
   <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
     <div class="selectContainer">
       <label
-        :class="[
-          'overlapping-label',
-          { disabledLabel: roverStore.manifestLoading },
-        ]"
+        :class="
+          roverStore.manifestLoading ? 'disabledLabel' : 'overlapping-label'
+        "
         for="rover-select"
         >Rover</label
       >
@@ -66,10 +65,5 @@ select {
   background-color: #004f72;
   color: white;
   z-index: 1;
-}
-
-.disabledLabel {
-  /* avoiding disabled label having no background, manually setting text opacity */
-  color: rgba(255, 255, 255, 0.27);
 }
 </style>
