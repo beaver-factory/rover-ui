@@ -1,6 +1,11 @@
 <template>
   <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
-    <div class="selectContainer">
+    <div
+      :class="[
+        'selectContainer',
+        { disabledElement: roverStore.manifestLoading },
+      ]"
+    >
       <label class="overlapping-label" :for="id">{{ label }}</label>
       <select :id="id" v-model="selected" @change="$emit('selected', selected)">
         <option v-for="option in options" :value="option" :key="option">
@@ -13,6 +18,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import useRoverStore from '../stores/roverStore'
 import BaseUnit from './BaseUnit.vue'
 
 const props = defineProps({
@@ -20,6 +26,8 @@ const props = defineProps({
   id: String,
   label: String,
 })
+
+const roverStore = useRoverStore()
 
 const selected = ref<string>(props.options[0])
 </script>
@@ -47,7 +55,8 @@ select {
   margin-top: -2.8rem;
   margin-left: 0.3rem;
   padding: 0 0.3rem;
-  background-color: #004f72;
-  color: white;
+  background-color: var(--background-color);
+  color: var(--primary-font-color);
+  z-index: 1;
 }
 </style>
