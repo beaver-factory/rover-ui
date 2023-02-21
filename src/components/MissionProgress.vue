@@ -1,5 +1,5 @@
 <template>
-  <BaseUnit :height="1" :width="2" :border-top="true" :border-right="true">
+  <BaseUnit :height="1" :width="2" :border-right="true">
     <div class="progressContainer">
       <label for="missionProgressBar">Mission Progress</label>
       <progress

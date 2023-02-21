@@ -11,7 +11,6 @@
       :key="i"
       :class="{ selected: i == photoIndex }"
       :background-color="''"
-      :border-top="true"
       :border-right="true"
       :padding-units="0.5"
       @click="roverStore.setIndex(i)"

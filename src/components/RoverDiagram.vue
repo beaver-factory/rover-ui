@@ -3,6 +3,7 @@
     :height="2"
     :width="2"
     :borderRight="true"
+    :borderBottom="true"
     class="rover_diagram_container"
   >
     <img class="rover_diagram" :src="selectedRoverDiagram" />
