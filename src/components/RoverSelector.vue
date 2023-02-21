@@ -1,11 +1,19 @@
 <template>
   <BaseUnit :height="1" :width="2" :border-bottom="true" :border-right="true">
     <div class="selectContainer">
-      <label class="overlapping-label" for="rover-select">Rover</label>
+      <label
+        :class="[
+          'overlapping-label',
+          { disabledLabel: roverStore.manifestLoading },
+        ]"
+        for="rover-select"
+        >Rover</label
+      >
       <select
         id="roverSelect"
         v-model="formStore.selectedRover"
         @change="handleSelect"
+        :disabled="roverStore.manifestLoading"
       >
         <option value="curiosity">Curiosity</option>
         <option value="opportunity">Opportunity</option>
@@ -56,5 +64,15 @@ select {
   padding: 0 0.3rem;
   background-color: #004f72;
   color: white;
+  z-index: 1;
+}
+
+select:disabled {
+  opacity: var(--disabled-opacity);
+}
+
+.disabledLabel {
+  /* avoiding disabled label having no background, manually setting text opacity */
+  color: rgba(255, 255, 255, 0.27);
 }
 </style>
