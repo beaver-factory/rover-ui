@@ -167,6 +167,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__active_date,
 .dp__overlay_cell_active {
   background: var(--selected-color);
+  /* border-radius: 0; */
   /* padding: 3px;
   height: 3rem;
   width: 3rem;
@@ -274,6 +275,6 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__overlay_container::-webkit-scrollbar-thumb {
   background-color: var(--selected-color);
-  border: 1px solid #a37331;
+  border: 0.5px solid #a37331;
 }
 </style>
