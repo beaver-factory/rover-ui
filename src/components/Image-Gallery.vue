@@ -1,8 +1,7 @@
 <template>
   <BaseUnit
-    :height="6"
+    :height="7"
     :width="'calc(100vw - calc(2 * var(--unit)))'"
-    :borderBottom="true"
     class="main_gallery"
   >
     <button
@@ -90,9 +89,9 @@ const handleClick = (index: number): void => {
 
 .nav_button {
   width: var(--unit);
-  height: calc(6 * var(--unit));
+  height: calc(5 * var(--unit));
   background-color: inherit;
-  border: 0;
+  border: none;
 }
 
 .gallery_item {
