@@ -11,9 +11,9 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import Thumbnails from './Thumbnails.vue'
 import ImageGallery from './Image-Gallery.vue'
-import { storeToRefs } from 'pinia'
 import useRoverStore from '../stores/roverStore'
 import BaseUnit from './BaseUnit.vue'
 
