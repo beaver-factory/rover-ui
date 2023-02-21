@@ -64,7 +64,7 @@ watch([() => roverStore.manifest.name, () => formStore.selectedDate], () => {
 }
 
 label {
-  color: white;
+  color: var(--primary-font-color);
   font-size: 0.75rem;
 }
 
