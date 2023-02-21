@@ -25,8 +25,7 @@ const roverStore = useRoverStore()
 const formStore = useFormStore()
 
 // setting default rover and initial manifest API call
-formStore.selectedRover = 'curiosity'
-roverStore.setManifest('curiosity')
+roverStore.setManifest(formStore.selectedRover)
 
 const handleSelect = (): void => {
   roverStore.setManifest(formStore.selectedRover)

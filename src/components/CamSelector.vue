@@ -24,7 +24,7 @@ const formStore = useFormStore()
 
 const { manifest } = storeToRefs(roverStore)
 const { selectedRover, selectedDate, selectedCam } = storeToRefs(formStore)
-const availableCams = ref<string[]>(['All'])
+const availableCams = ref<string[]>([])
 
 const findCams = (): void => {
   const selectedDayManifest = manifest.value.photos.filter(
