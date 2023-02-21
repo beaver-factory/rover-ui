@@ -14,7 +14,6 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 import { watch, ref } from 'vue'
-import { Manifest } from '../api/interfaces'
 import useFormStore from '../stores/formStore'
 import useRoverStore from '../stores/roverStore'
 
