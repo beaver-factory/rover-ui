@@ -1,27 +1,25 @@
 <template>
   <BaseUnit :height="2" :width="2" :border-bottom="true" :border-right="true">
-    <div class="container">
-      <VueDatePicker
-        id="dp"
-        :key="calendarKey"
-        inline
-        :class="{ disabledElement: roverStore.manifestLoading }"
-        :enable-time-picker="false"
-        :min-date="minDate"
-        :max-date="maxDate"
-        :year-range="[minDate.getFullYear(), maxDate.getFullYear()]"
-        :start-date="minDate"
-        prevent-min-max-navigation
-        auto-apply
-        six-weeks
-        v-model="chosenDate"
-        @internal-model-change="changeDate"
-        calendar-cell-class-name="dp-custom-cell"
-        :day-class="highlightDate"
-        menu-class-name="dp-custom-menu"
-      >
-      </VueDatePicker>
-    </div>
+    <VueDatePicker
+      id="dp"
+      :key="calendarKey"
+      inline
+      :class="{ disabledElement: roverStore.manifestLoading }"
+      :enable-time-picker="false"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :year-range="[minDate.getFullYear(), maxDate.getFullYear()]"
+      :start-date="minDate"
+      prevent-min-max-navigation
+      auto-apply
+      six-weeks
+      v-model="chosenDate"
+      @internal-model-change="changeDate"
+      calendar-cell-class-name="dp-custom-cell"
+      :day-class="highlightDate"
+      menu-class-name="dp-custom-menu"
+    >
+    </VueDatePicker>
   </BaseUnit>
 </template>
 
@@ -74,74 +72,29 @@ const highlightDate = (newDate: Date): string => {
 </script>
 
 <style>
-/* .dp__instance_calendar:focus-visible {
-  outline: none;
-} */
-
-/* ------ OVERLAY ------ */
-
-.dp__overlay,
-.dp__overlay_container,
-.dp__container_flex,
-.dp__button {
-  background-color: var(--background-color);
-}
-
-.dp__overlay_container {
-  border: var(--border);
-}
-
-/* ------ PRIMARY SELECTOR ------- */
+/* MAIN COMPONENT SIZING */
 
 .dp-custom-menu {
-  font-size: 1rem;
   border: none;
   background-color: var(--background-color);
   min-width: 0;
   min-height: 0;
-  max-height: 100%;
+}
+.dp__instance_calendar:focus-visible,
+.dp__main:focus-visible,
+.dp__theme_light:focus-visible,
+.dp__flex_display:focus-visible,
+.dp__main:focus {
+  outline: none;
+  border: none;
 }
 
-.dp__inner_nav > .dp__icon {
-  stroke: white;
-  fill: white;
-  height: 2vh;
-  /* height: calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.3); */
-}
 .dp__instance_calendar > div > div {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   height: calc(2 * var(--unit) - 2 * var(--padding));
 }
-
-.dp__inner_nav > .dp__icon:hover {
-  stroke: var(--selected-color);
-  fill: var(--selected-color);
-}
-
-.dp__inner_nav {
-  height: auto;
-}
-
-.dp__inner_nav_disabled > .dp__icon:hover {
-  stroke: white;
-  fill: white;
-}
-
-.dp__inner_nav:hover {
-  background-color: inherit;
-}
-
-.dp__inner_nav_disabled {
-  background-color: inherit;
-  opacity: var(--disabled-opacity);
-}
-
-.dp__month_year_row {
-  height: auto !important;
-}
-
 .dp__calendar_row {
   margin: 0;
 }
@@ -156,6 +109,10 @@ const highlightDate = (newDate: Date): string => {
   margin: 0;
 } */
 
+.dp__calendar_header {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 .dp__cell_inner,
 .dp__calendar_header_item {
   height: auto;
@@ -164,70 +121,54 @@ const highlightDate = (newDate: Date): string => {
   font-size: 1.2vh;
   color: white;
 }
+/* MONTH YEAR NAV BAR STYLING */
 
-.dp__calendar_header {
-  padding-top: 5px;
-  padding-bottom: 5px;
+.dp__inner_nav {
+  height: auto;
+}
+.dp__inner_nav:hover {
+  background-color: inherit;
+}
+.dp__inner_nav > .dp__icon {
+  stroke: white;
+  fill: white;
+}
+
+.dp__inner_nav > .dp__icon:hover {
+  stroke: var(--selected-color);
+  fill: var(--selected-color);
+}
+
+.dp__inner_nav_disabled {
+  background-color: inherit;
+  opacity: var(--disabled-opacity);
+}
+.dp__inner_nav_disabled > .dp__icon:hover {
+  stroke: white;
+  fill: white;
 }
 
 .dp__month_year_select {
+  color: var(--primary-font-color);
   font-size: 1.5vh;
-  height: auto;
+  height: 100%;
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
-/* ------ CELLS ------ */
+.dp__month_year_row {
+  height: auto !important;
+}
 
+/* CELLS (MAIN CALENDAR AND OVERLAY) */
 .dp__active_date,
 .dp__overlay_cell_active {
   background: var(--selected-color);
-  border: var(--border);
-  /* border-radius: 0; */
-  /* padding: 3px;
-  height: 3rem;
-  width: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 
-.dp__overlay_cell_active:hover {
-  color: white !important;
-}
-
-.dp__overlay_cell_pad {
-  padding: 8px 0;
-  /* padding-top: 3px;
-  padding-bottom: 3px; */
-  /*
-  height: 3rem;
-  width: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; */
-}
-
-.dp__overlay_cell_pad:hover {
-  color: #004f72;
-}
-/*
-.dp-custom-cell {
-  height: 1.3rem;
-  width: 1.3rem;
-  padding: 3px;
-  color: var(--primary-font-color);
-  margin: 0 2px;
-}
-
-.dp-custom-cell:hover {
-  border-radius: 0;
-}
-
-.dp__cell_offset {
-  color: rgb(192, 186, 186);
-}
-
-.dp__overlay_cell {
-  color: var(--primary-font-color);
+.dp__overlay_cell:hover,
+.dp__date_hover:hover {
+  color: var(--background-color);
 }
 
 .dp__cell_disabled,
@@ -241,42 +182,39 @@ const highlightDate = (newDate: Date): string => {
   color: white;
 }
 
-/* ------ MONTH/YEAR ------ */
-/* .dp__inner_nav {
-  height: 1rem;
-  width: 1.5rem;
-  border-radius: 10%;
-} */
-
-/* .dp__inner_nav_disabled,
-.dp__inner_nav_disabled:hover {
-  background-color: #004f72;
-} */
-
-.dp__month_year_select {
-  /* height: 1rem; */
-  color: white;
+.dp__today {
+  border: var(--border);
 }
 
-/* MONTH YEAR CHOOSER OVERLAY */
+.dp__cell_offset {
+  color: var(--primary-font-color);
+  opacity: var(--disabled-opacity);
+}
+
+/* OVERLAY (FOR MONTH/YEAR SELECTION) */
+.dp__overlay,
+.dp__overlay_container,
+.dp__container_flex,
+.dp__button {
+  background-color: var(--background-color);
+}
 
 .dp__overlay_container {
   height: calc(2 * var(--unit) - 2 * var(--padding) - 35px) !important;
-  background-color: #004f72;
   overflow-y: overlay;
+  border: var(--border);
 }
 .dp__overlay {
-  border: 1px solid white !important;
+  border: var(--border);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  background-color: #004f72;
   height: calc(2 * var(--unit) - 2 * var(--padding)) !important;
-  color: white;
+  color: var(--primary-font-color);
 }
 
 .dp__icon {
-  stroke: #004f72;
-  fill: #004f72;
+  stroke: var(--background-color);
+  fill: var(--background-color);
 }
 .dp__icon:hover {
   stroke: var(--selected-color);
