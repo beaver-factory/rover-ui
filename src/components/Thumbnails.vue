@@ -48,7 +48,7 @@ const { photoIndex, photosLoading } = storeToRefs(roverStore)
 }
 
 .selected {
-  background-color: #0083cb;
+  background-color: var(--selected-color);
 }
 .thumbnail:hover {
   background-color: #ffffff;
