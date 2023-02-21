@@ -32,7 +32,7 @@ const hasTakenOrTook: ComputedRef<string> = computed((): string =>
 
 <style scoped>
 p {
-  color: white;
+  color: var(--primary-font-color);
   font-size: 1.2vh;
 }
 
