@@ -9,4 +9,6 @@
   --unit: calc(100vh / 9);
   --padding: 20px;
   --background-color: #004f72;
+  --selected-color: #d69941;
+  --disabled-opacity: 0.3;
 }
