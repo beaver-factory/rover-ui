@@ -1,7 +1,7 @@
 <template>
   <BaseUnit :width="2" :border-right="true" :border-bottom="true">
-    <div v-if="!roverStore.manifestLoading">
-      <p>
+    <div>
+      <p :class="{ disabledText: roverStore.manifestLoading }">
         <strong>{{ roverStore.manifest.name }}</strong>
         {{ hasBeenOrWas }} active for
         <strong>{{ roverStore.manifest.max_sol }}</strong> solar days on Mars.
@@ -35,9 +35,14 @@ p {
   color: white;
   font-size: 1.2vh;
 }
+
 div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.disabledText {
+  opacity: var(--disabled-opacity);
 }
 </style>
