@@ -46,7 +46,6 @@ const chosenDate = ref<Date>(new Date(formStore.selectedDate))
 watch(
   () => roverStore.manifest.name,
   (newRover, oldRover) => {
-    console.log(newRover)
     if (oldRover !== newRover) {
       chosenDate.value = new Date(roverStore.manifest.landing_date)
       if (newRover === 'Spirit' || newRover === 'Opportunity') {
