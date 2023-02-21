@@ -15,7 +15,6 @@
 }
 
 /* global classes for handling disabled elements */
-/* for calendar disabled styles see .dp__menu_disabled in DateSelector.vue */
 
 .disabledElement {
   opacity: var(--disabled-opacity);
