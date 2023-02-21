@@ -1,27 +1,25 @@
 <template>
   <BaseUnit :height="2" :width="2" :border-bottom="true" :border-right="true">
-    <div class="container">
-      <VueDatePicker
-        id="dp"
-        :key="calendarKey"
-        inline
-        :disabled="roverStore.manifestLoading"
-        :enable-time-picker="false"
-        :min-date="minDate"
-        :max-date="maxDate"
-        :year-range="[minDate.getFullYear(), maxDate.getFullYear()]"
-        :start-date="minDate"
-        prevent-min-max-navigation
-        auto-apply
-        six-weeks
-        v-model="chosenDate"
-        @internal-model-change="changeDate"
-        calendar-cell-class-name="dp-custom-cell"
-        :day-class="highlightDate"
-        menu-class-name="dp-custom-menu"
-      >
-      </VueDatePicker>
-    </div>
+    <VueDatePicker
+      id="dp"
+      :key="calendarKey"
+      inline
+      :disabled="roverStore.manifestLoading"
+      :enable-time-picker="false"
+      :min-date="minDate"
+      :max-date="maxDate"
+      :year-range="[minDate.getFullYear(), maxDate.getFullYear()]"
+      :start-date="minDate"
+      prevent-min-max-navigation
+      auto-apply
+      six-weeks
+      v-model="chosenDate"
+      @internal-model-change="changeDate"
+      calendar-cell-class-name="dp-custom-cell"
+      :day-class="highlightDate"
+      menu-class-name="dp-custom-menu"
+    >
+    </VueDatePicker>
   </BaseUnit>
 </template>
 
@@ -68,28 +66,55 @@ const highlightDate = (newDate: Date): string => {
 </script>
 
 <style>
-.container {
+/* .container {
   overflow: none;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} */
 
-.dp__theme_light:focus {
+/* .dp__theme_light:focus {
   border-radius: 0;
-}
+} */
 
 /* ------ OVERLAY ------ */
-
-.dp__overlay,
-.dp__overlay_container,
-.dp__container_flex,
-.dp__button {
+.dp__overlay_container {
+  height: calc(2 * var(--unit) - 2 * var(--padding) - 35px) !important;
   background-color: #004f72;
+  overflow-y: overlay;
+}
+.dp__overlay {
+  border: 1px solid white !important;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #004f72;
+  max-height: calc(2 * var(--unit) - 2 * var(--padding)) !important;
+  color: white;
+}
+.dp__icon {
+  stroke: #004f72;
+  fill: #004f72;
+}
+.dp__icon:hover {
+  stroke: var(--selected-color);
+  fill: var(--selected-color);
 }
 
-.dp__overlay_container {
-  border: 1px solid white;
+.dp__button,
+.dp__button:hover {
+  background-color: white;
+}
+.dp__overlay_container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.dp__overlay_container::-webkit-scrollbar-track {
+  background-color: inherit;
+}
+
+.dp__overlay_container::-webkit-scrollbar-thumb {
+  background-color: var(--selected-color);
+  box-shadow: 5px;
 }
 
 /* ------ PRIMARY SELECTOR ------- */
@@ -103,43 +128,51 @@ const highlightDate = (newDate: Date): string => {
   max-height: 100%;
 }
 
-.dp__calendar_row {
+/* .dp__calendar_row {
   margin: 0;
-}
+} */
 /* ------ CELLS ------ */
 
 .dp__active_date,
 .dp__overlay_cell_active {
-  background: #8c0e56;
-  border: 1px solid white;
+  background: var(--selected-color);
   border-radius: 0;
-  padding: 3px;
+  /* padding: 3px;
   height: 3rem;
   width: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
 }
+
+.dp__overlay_cell_active:hover {
+  color: white !important;
+}
+
 .dp__overlay_cell_pad {
   border-radius: 0;
-  padding: 3px;
+  padding: 8px 0;
+  /* padding-top: 3px;
+  padding-bottom: 3px; */
+  /*
   height: 3rem;
   width: 3rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .dp__overlay_cell_pad:hover {
   border-radius: 0;
+  color: #004f72;
 }
 
 .dp-custom-cell {
-  height: 1.3rem;
+  /* height: 1.3rem;
   width: 1.3rem;
   padding: 3px;
+  margin: 0 2px; */
   color: white;
-  margin: 0 2px;
 }
 
 .dp-custom-cell:hover {
@@ -150,10 +183,6 @@ const highlightDate = (newDate: Date): string => {
   color: rgb(192, 186, 186);
 }
 
-.dp__overlay_cell {
-  color: white;
-}
-
 .dp__cell_disabled,
 .dp__overlay_cell_disabled {
   background-color: #004f72;
@@ -162,23 +191,23 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__overlay_cell_disabled:hover {
   background-color: #004f72;
-  color: #015e86;
+  color: #015e86 !important;
 }
 
 /* ------ MONTH/YEAR ------ */
-.dp__inner_nav {
+/* .dp__inner_nav {
   height: 1rem;
   width: 1.5rem;
   border-radius: 10%;
-}
+} */
 
-.dp__inner_nav_disabled,
+/* .dp__inner_nav_disabled,
 .dp__inner_nav_disabled:hover {
   background-color: #004f72;
-}
+} */
 
 .dp__month_year_select {
-  height: 1rem;
+  /* height: 1rem; */
   color: white;
 }
 
@@ -186,7 +215,7 @@ const highlightDate = (newDate: Date): string => {
   border-radius: 0;
 }
 
-.dp__month_year_row {
+/* .dp__month_year_row {
   height: 1.5rem;
 }
 
@@ -199,5 +228,27 @@ const highlightDate = (newDate: Date): string => {
   height: 1rem;
   width: 1.5rem;
   padding: 0;
+} */
+</style>
+<style scoped>
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5vh;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--selected-color);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--selected-color);
 }
 </style>
