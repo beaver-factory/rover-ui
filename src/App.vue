@@ -22,7 +22,6 @@ import Viewer from './components/Viewer.vue'
 }
 
 .sidebar {
-  background-color: blue;
   height: calc(100vh - var(--unit));
   width: calc(2 * var(--unit));
 }

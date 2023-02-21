@@ -1,25 +1,27 @@
 <template>
   <BaseUnit :height="2" :width="2" :border-bottom="true" :border-right="true">
-    <VueDatePicker
-      id="dp"
-      :key="calendarKey"
-      inline
-      :disabled="roverStore.manifestLoading"
-      :enable-time-picker="false"
-      :min-date="minDate"
-      :max-date="maxDate"
-      :year-range="[minDate.getFullYear(), maxDate.getFullYear()]"
-      :start-date="minDate"
-      prevent-min-max-navigation
-      auto-apply
-      six-weeks
-      v-model="chosenDate"
-      @internal-model-change="changeDate"
-      calendar-cell-class-name="dp-custom-cell"
-      :day-class="highlightDate"
-      menu-class-name="dp-custom-menu"
-    >
-    </VueDatePicker>
+    <div class="container">
+      <VueDatePicker
+        id="dp"
+        :key="calendarKey"
+        inline
+        :class="{ disabledElement: roverStore.manifestLoading }"
+        :enable-time-picker="false"
+        :min-date="minDate"
+        :max-date="maxDate"
+        :year-range="[minDate.getFullYear(), maxDate.getFullYear()]"
+        :start-date="minDate"
+        prevent-min-max-navigation
+        auto-apply
+        six-weeks
+        v-model="chosenDate"
+        @internal-model-change="changeDate"
+        calendar-cell-class-name="dp-custom-cell"
+        :day-class="highlightDate"
+        menu-class-name="dp-custom-menu"
+      >
+      </VueDatePicker>
+    </div>
   </BaseUnit>
 </template>
 
@@ -78,12 +80,23 @@ const highlightDate = (newDate: Date): string => {
 
 /* ------ OVERLAY ------ */
 
+.dp__overlay,
+.dp__overlay_container,
+.dp__container_flex,
+.dp__button {
+  background-color: var(--background-color);
+}
+
+.dp__overlay_container {
+  border: var(--border);
+}
+
 /* ------ PRIMARY SELECTOR ------- */
 
 .dp-custom-menu {
   font-size: 1rem;
   border: none;
-  background-color: #004f72;
+  background-color: var(--background-color);
   min-width: 0;
   min-height: 0;
   max-height: 100%;
@@ -167,6 +180,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__active_date,
 .dp__overlay_cell_active {
   background: var(--selected-color);
+  border: var(--border);
   /* border-radius: 0; */
   /* padding: 3px;
   height: 3rem;
@@ -195,17 +209,25 @@ const highlightDate = (newDate: Date): string => {
 .dp__overlay_cell_pad:hover {
   color: #004f72;
 }
-
+/*
 .dp-custom-cell {
-  /* height: 1.3rem;
+  height: 1.3rem;
   width: 1.3rem;
   padding: 3px;
-  margin: 0 2px; */
-  color: white;
+  color: var(--primary-font-color);
+  margin: 0 2px;
+}
+
+.dp-custom-cell:hover {
+  border-radius: 0;
 }
 
 .dp__cell_offset {
   color: rgb(192, 186, 186);
+}
+
+.dp__overlay_cell {
+  color: var(--primary-font-color);
 }
 
 .dp__cell_disabled,
