@@ -41,13 +41,18 @@ const minDate = computed<Date>(() => new Date(roverStore.manifest.landing_date))
 const maxDate = computed<Date>(() => new Date(roverStore.manifest.max_date))
 
 // default date setting, for initial API call
-const chosenDate = ref<Date>(new Date('2023-01-01'))
+const chosenDate = ref<Date>(new Date(formStore.selectedDate))
 
 watch(
   () => roverStore.manifest.name,
-  (oldRover, newRover) => {
+  (newRover, oldRover) => {
+    console.log(newRover)
     if (oldRover !== newRover) {
-      chosenDate.value = minDate.value
+      chosenDate.value = new Date(roverStore.manifest.landing_date)
+      if (newRover === 'Spirit' || newRover === 'Opportunity') {
+        // adds one to landing date as no photos taken on landing date for these rovers
+        chosenDate.value.setDate(chosenDate.value.getDate() + 1)
+      }
       //  force rerender
       calendarKey.value += 1
     }
