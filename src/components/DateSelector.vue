@@ -75,6 +75,12 @@ const highlightDate = (newDate: Date): string => {
   align-items: center;
 }
 
+.dp__menu_disabled {
+  /* could not use global opacity rule for disabling this component,
+  use transparent color-layer on this div instead */
+  background: #00507293;
+}
+
 .dp__theme_light:focus {
   border-radius: 0;
 }
@@ -110,7 +116,7 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__active_date,
 .dp__overlay_cell_active {
-  background: #8c0e56;
+  background-color: var(--selected-color);
   border: 1px solid white;
   border-radius: 0;
   padding: 3px;
