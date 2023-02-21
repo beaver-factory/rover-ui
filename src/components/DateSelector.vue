@@ -38,13 +38,18 @@ const calendarKey = ref<number>(0)
 const minDate = computed<Date>(() => new Date(roverStore.manifest.landing_date))
 const maxDate = computed<Date>(() => new Date(roverStore.manifest.max_date))
 
-const chosenDate = ref<Date>(new Date())
+// default date setting, for initial API call
+const chosenDate = ref<Date>(new Date(formStore.selectedDate))
 
 watch(
   () => roverStore.manifest.name,
-  (oldRover, newRover) => {
+  (newRover, oldRover) => {
     if (oldRover !== newRover) {
-      chosenDate.value = minDate.value
+      chosenDate.value = new Date(roverStore.manifest.landing_date)
+      if (newRover === 'Spirit' || newRover === 'Opportunity') {
+        // adds one to landing date as no photos taken on landing date for these rovers
+        chosenDate.value.setDate(chosenDate.value.getDate() + 1)
+      }
       //  force rerender
       calendarKey.value += 1
     }
@@ -54,6 +59,7 @@ watch(
 const changeDate = (): void => {
   // eslint-disable-next-line
   formStore.selectedDate = chosenDate.value.toISOString().split('T')[0]
+  roverStore.setPhotos(formStore.selectedRover, formStore.selectedDate)
 }
 
 const highlightDate = (newDate: Date): string => {

@@ -12,9 +12,13 @@ export const fetchPhotos = async (
   date: string,
   camera?: string
 ): Promise<RoverPhoto[]> => {
+  const dateQuery = `earth_date=${date}`
+  const cameraQuery = camera ? `&camera=${camera}` : ''
+
   const response = await marsApi.get(
-    `/rovers/curiosity/photos?earth_date=2023-2-3&api_key=${apiKey}`
+    `/rovers/${rover}/photos?${dateQuery}${cameraQuery}&api_key=${apiKey}`
   )
+
   return response.data.photos
 }
 
