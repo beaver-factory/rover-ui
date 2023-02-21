@@ -67,7 +67,7 @@ label {
   width: 100%;
   border-radius: 0;
   border: 1px solid white;
-  background-color: #004f72;
+  background-color: transparent;
   transition: width 0.25s ease-in-out;
 }
 
@@ -84,7 +84,7 @@ progress::-moz-progress-bar {
   width: 100%;
   border-radius: 0;
   border: 1px solid white;
-  background-color: #004f72;
+  background-color: transparent;
   transition: width 0.25s ease-in-out;
 }
 
@@ -98,7 +98,7 @@ progress::-webkit-progress-value {
 progress {
   color: white;
   width: 100%;
-  background-color: #004f72;
+  background-color: transparent;
   transition: width 0.25s ease-in-out;
 }
 </style>
