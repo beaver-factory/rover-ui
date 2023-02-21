@@ -27,7 +27,6 @@ roverStore.setPhotos('curiosity', '2023-2-3')
 }
 
 .sidebar {
-  background-color: blue;
   height: calc(100vh - var(--unit));
   width: calc(2 * var(--unit));
 }
