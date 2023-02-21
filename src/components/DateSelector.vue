@@ -77,6 +77,10 @@ const highlightDate = (newDate: Date): string => {
   border-radius: 0;
 } */
 
+/* .dp__instance_calendar:focus-visible {
+  outline: none;
+} */
+
 /* ------ OVERLAY ------ */
 .dp__overlay_container {
   height: calc(2 * var(--unit) - 2 * var(--padding) - 35px) !important;
@@ -132,11 +136,22 @@ const highlightDate = (newDate: Date): string => {
   stroke: white;
   fill: white;
   height: 2vh;
+  /* height: calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.3); */
+}
+.dp__instance_calendar > div > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: calc(2 * var(--unit) - 2 * var(--padding));
 }
 
 .dp__inner_nav > .dp__icon:hover {
   stroke: var(--selected-color);
   fill: var(--selected-color);
+}
+
+.dp__inner_nav {
+  height: auto;
 }
 
 .dp__inner_nav_disabled > .dp__icon:hover {
@@ -154,7 +169,18 @@ const highlightDate = (newDate: Date): string => {
 }
 
 .dp__month_year_row {
-  height: auto;
+  height: auto !important;
+}
+
+.dp__calendar_row {
+  margin: 0;
+}
+
+.dp__calendar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.7);
 }
 /* .dp__calendar_row {
   margin: 0;
@@ -165,14 +191,20 @@ const highlightDate = (newDate: Date): string => {
   height: auto;
   padding: 0;
   width: calc(calc(2 * var(--unit) - 2 * var(--padding)) / 7);
-  font-size: 0.5rem;
+  font-size: 1.2vh;
   color: white;
 }
 
+.dp__calendar_header {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .dp__month_year_select {
-  font-size: 0.5rem;
+  font-size: 1.5vh;
   height: auto;
 }
+
 /* ------ CELLS ------ */
 
 .dp__active_date,
@@ -227,13 +259,13 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__cell_disabled,
 .dp__overlay_cell_disabled {
-  background-color: #004f72;
-  color: #015e86;
+  background-color: transparent;
+  opacity: var(--disabled-opacity);
 }
 
 .dp__overlay_cell_disabled:hover {
-  background-color: #004f72;
-  color: #015e86 !important;
+  background-color: transparent;
+  color: white;
 }
 
 /* ------ MONTH/YEAR ------ */
