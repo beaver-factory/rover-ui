@@ -152,6 +152,11 @@ const highlightDate = (newDate: Date): string => {
   padding-top: 4px;
   padding-bottom: 4px;
   border-radius: 0;
+  transition: 0.3s;
+}
+
+.dp__month_year_select:hover {
+  color: var(--background-color);
 }
 
 .dp__month_year_row {
@@ -161,8 +166,10 @@ const highlightDate = (newDate: Date): string => {
 /* CELLS (MAIN CALENDAR AND OVERLAY) */
 
 .dp__overlay_cell_pad,
-.dp-custom-cell {
+.dp-custom-cell,
+.dp__date_hover {
   border-radius: 0;
+  transition: 0.3s;
 }
 
 .dp__active_date,
@@ -220,6 +227,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__icon {
   stroke: var(--background-color);
   fill: var(--background-color);
+  transition: 0.3s;
 }
 .dp__icon:hover {
   stroke: var(--selected-color);
