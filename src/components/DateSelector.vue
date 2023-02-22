@@ -168,6 +168,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__active_date,
 .dp__overlay_cell_active {
   background: var(--selected-color);
+  border: var(--border);
 }
 
 .dp__overlay_cell:hover,
