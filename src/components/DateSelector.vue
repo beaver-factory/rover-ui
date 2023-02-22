@@ -249,6 +249,13 @@ const highlightDate = (newDate: Date): string => {
   color: var(--primary-font-color);
 }
 
+.dp__overlay_cell_pad {
+  height: calc(calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.33) - 0.7vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .dp__icon {
   stroke: var(--background-color);
   fill: var(--background-color);
