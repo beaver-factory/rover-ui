@@ -151,7 +151,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__inner_nav > .dp__icon {
   stroke: var(--primary-font-color);
   fill: var(--primary-font-color);
-  height: 2vh;
+  height: 2vh !important;
 }
 
 .dp__inner_nav > .dp__icon:hover {
@@ -237,7 +237,7 @@ const highlightDate = (newDate: Date): string => {
 }
 
 .dp__overlay_container {
-  height: calc(2 * var(--unit) - 2 * var(--padding) - 35px) !important;
+  height: calc(2 * var(--unit) - 2 * var(--padding) - 4vh) !important;
   overflow-y: overlay;
   border: var(--border);
 }
@@ -247,6 +247,7 @@ const highlightDate = (newDate: Date): string => {
   border-bottom-right-radius: 4px;
   height: calc(2 * var(--unit) - 2 * var(--padding)) !important;
   color: var(--primary-font-color);
+  width: calc(2 * var(--unit) - 2 * var(--padding));
 }
 
 .dp__overlay_cell_pad {
@@ -254,6 +255,7 @@ const highlightDate = (newDate: Date): string => {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.5vh;
 }
 
 .dp__icon {
@@ -264,6 +266,12 @@ const highlightDate = (newDate: Date): string => {
 .dp__icon:hover {
   stroke: var(--selected-color);
   fill: var(--selected-color);
+}
+.dp__button > svg {
+  height: 2.5vh;
+}
+.dp__button {
+  height: 4vh;
 }
 
 .dp__button,
