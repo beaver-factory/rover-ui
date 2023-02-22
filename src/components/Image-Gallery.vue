@@ -3,6 +3,7 @@
     :height="7"
     :width="'calc(100vw - calc(2 * var(--unit)))'"
     class="main_gallery"
+    :border-bottom="true"
   >
     <button
       class="nav_button"
