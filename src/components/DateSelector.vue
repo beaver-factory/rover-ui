@@ -92,22 +92,19 @@ const highlightDate = (newDate: Date): string => {
 .dp__instance_calendar > div > div {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   height: calc(2 * var(--unit) - 2 * var(--padding));
 }
 .dp__calendar_row {
   margin: 0;
 }
 
-.dp__calendar {
+.dp__calendar_wrap > .dp__calendar {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   height: calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.7);
 }
-/* .dp__calendar_row {
-  margin: 0;
-} */
 
 .dp__calendar_header {
   padding-top: 5px;
