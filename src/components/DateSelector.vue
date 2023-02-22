@@ -84,7 +84,9 @@ const highlightDate = (newDate: Date): string => {
 .dp__main:focus-visible,
 .dp__theme_light:focus-visible,
 .dp__flex_display:focus-visible,
-.dp__main:focus {
+.dp__main:focus,
+.dp-custom-menu:focus,
+.dp-custom-menu:focus-visible {
   outline: none;
   border: none;
 }
