@@ -107,8 +107,8 @@ const highlightDate = (newDate: Date): string => {
 }
 
 .dp__calendar_header {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 0.5vh;
+  padding-bottom: 0.2vh;
 }
 .dp__cell_inner,
 .dp__calendar_header_item {
@@ -151,6 +151,7 @@ const highlightDate = (newDate: Date): string => {
   height: 100%;
   padding-top: 4px;
   padding-bottom: 4px;
+  border-radius: 0;
 }
 
 .dp__month_year_row {
@@ -158,6 +159,12 @@ const highlightDate = (newDate: Date): string => {
 }
 
 /* CELLS (MAIN CALENDAR AND OVERLAY) */
+
+.dp__overlay_cell_pad,
+.dp-custom-cell {
+  border-radius: 0;
+}
+
 .dp__active_date,
 .dp__overlay_cell_active {
   background: var(--selected-color);
