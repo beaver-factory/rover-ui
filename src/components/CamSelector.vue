@@ -43,6 +43,7 @@ watch([selectedDate, manifest], () => {
 
 const handleSelect = (selected: string): void => {
   selectedCam.value = selected
+  roverStore.setIndex(0)
   if (selectedCam.value === 'All') {
     roverStore.setPhotos(selectedRover.value, selectedDate.value)
   } else {

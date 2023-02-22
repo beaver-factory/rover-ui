@@ -26,7 +26,7 @@ const formStore = useFormStore()
 const roverStore = useRoverStore()
 
 const selectedRoverDiagram: ComputedRef<string> = computed((): string =>
-  formStore.selectedRover === 'curiosity'
+  formStore.selectedRover === 'Curiosity'
     ? 'src/assets/curiosity.png'
     : 'src/assets/spirit-opportunity.png'
 )
