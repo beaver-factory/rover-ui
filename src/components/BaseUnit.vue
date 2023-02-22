@@ -54,7 +54,7 @@ const width =
 
 const padding = `calc(${props.paddingUnits} * var(--padding))`
 
-const border = 'solid white 1px'
+const border = 'var(--border)'
 
 const borderTopWidth = props.borderTop ? '1px' : '0px'
 const borderBottomWidth = props.borderBottom ? '1px' : '0px'

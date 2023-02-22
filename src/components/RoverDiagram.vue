@@ -6,7 +6,13 @@
     :borderBottom="true"
     class="rover_diagram_container"
   >
-    <img class="rover_diagram" :src="selectedRoverDiagram" />
+    <img
+      :src="selectedRoverDiagram"
+      :class="[
+        'rover_diagram',
+        { disabledElement: roverStore.manifestLoading },
+      ]"
+    />
   </BaseUnit>
 </template>
 
@@ -14,8 +20,10 @@
 import { computed, ComputedRef } from 'vue'
 import BaseUnit from './BaseUnit.vue'
 import useFormStore from '../stores/formStore'
+import useRoverStore from '../stores/roverStore'
 
 const formStore = useFormStore()
+const roverStore = useRoverStore()
 
 const selectedRoverDiagram: ComputedRef<string> = computed((): string =>
   formStore.selectedRover === 'curiosity'

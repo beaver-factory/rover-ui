@@ -1,6 +1,9 @@
 <template>
   <BaseUnit :height="1" :width="2" :border-right="true">
-    <div class="progressContainer">
+    <div
+      class="progressContainer"
+      :class="{ disabledElement: roverStore.manifestLoading }"
+    >
       <label for="missionProgressBar">Mission Progress</label>
       <progress
         id="missionProgressBar"
@@ -59,23 +62,15 @@ watch([() => roverStore.manifest.name, () => formStore.selectedDate], () => {
 }
 
 label {
-  color: white;
+  color: var(--primary-font-color);
   font-size: 0.75rem;
-}
-
-::-webkit-progress-bar {
-  width: 100%;
-  border-radius: 0;
-  border: 1px solid white;
-  background-color: transparent;
-  transition: width 0.25s ease-in-out;
 }
 
 /* Firefox */
 progress::-moz-progress-bar {
   width: 100%;
   border-radius: 0;
-  border: 1px solid white;
+  border: var(--border);
   background: white;
   transition: width 0.25s ease-in-out;
 }
@@ -83,12 +78,20 @@ progress::-moz-progress-bar {
 ::-moz-progress-bar {
   width: 100%;
   border-radius: 0;
-  border: 1px solid white;
+  border: var(--border);
   background-color: transparent;
   transition: width 0.25s ease-in-out;
 }
 
 /* Chrome/Safari */
+::-webkit-progress-bar {
+  width: 100%;
+  border-radius: 0;
+  border: var(--border);
+  background-color: transparent;
+  transition: width 0.25s ease-in-out;
+}
+
 progress::-webkit-progress-value {
   background: white;
   transition: width 0.25s ease-in-out;

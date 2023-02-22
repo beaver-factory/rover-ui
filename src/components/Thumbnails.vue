@@ -47,16 +47,16 @@ const { photoIndex, photosLoading } = storeToRefs(roverStore)
   align-items: center;
 }
 
-.selected {
-  background-color: #0083cb;
-}
 .thumbnail:hover {
   background-color: #ffffff;
   transition: 0.3s;
 }
+.selected {
+  background-color: var(--selected-color);
+}
 
 .selected:hover {
-  background-color: #0083cb;
+  background-color: var(--selected-color);
   transition: 0.3s;
 }
 .thumbnail-img {
