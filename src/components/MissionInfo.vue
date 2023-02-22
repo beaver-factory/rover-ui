@@ -22,11 +22,11 @@ const roverStore = useRoverStore()
 const formStore = useFormStore()
 
 const hasBeenOrWas: ComputedRef<string> = computed((): string =>
-  formStore.selectedRover === 'curiosity' ? ' has been ' : ' was '
+  formStore.selectedRover === 'Curiosity' ? ' has been ' : ' was '
 )
 
 const hasTakenOrTook: ComputedRef<string> = computed((): string =>
-  formStore.selectedRover === 'curiosity' ? ' has taken ' : ' took '
+  formStore.selectedRover === 'Curiosity' ? ' has taken ' : ' took '
 )
 </script>
 
