@@ -116,7 +116,7 @@ const highlightDate = (newDate: Date): string => {
   padding: 0;
   width: calc(calc(2 * var(--unit) - 2 * var(--padding)) / 7);
   font-size: 1.2vh;
-  color: white;
+  color: var(--primary-font-color);
 }
 /* MONTH YEAR NAV BAR STYLING */
 
@@ -127,8 +127,8 @@ const highlightDate = (newDate: Date): string => {
   background-color: inherit;
 }
 .dp__inner_nav > .dp__icon {
-  stroke: white;
-  fill: white;
+  stroke: var(--primary-font-color);
+  fill: var(--primary-font-color);
 }
 
 .dp__inner_nav > .dp__icon:hover {
@@ -141,8 +141,8 @@ const highlightDate = (newDate: Date): string => {
   opacity: var(--disabled-opacity);
 }
 .dp__inner_nav_disabled > .dp__icon:hover {
-  stroke: white;
-  fill: white;
+  stroke: var(--primary-font-color);
+  fill: var(--primary-font-color);
 }
 
 .dp__month_year_select {
@@ -176,7 +176,7 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__overlay_cell_disabled:hover {
   background-color: transparent;
-  color: white;
+  color: var(--primary-font-color);
 }
 
 .dp__today {
@@ -220,7 +220,7 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__button,
 .dp__button:hover {
-  background-color: white;
+  background-color: var(--primary-font-color);
 }
 .dp__overlay_container::-webkit-scrollbar {
   width: 0.7vh;
@@ -232,6 +232,6 @@ const highlightDate = (newDate: Date): string => {
 
 .dp__overlay_container::-webkit-scrollbar-thumb {
   background-color: var(--selected-color);
-  border: 0.5px solid #a37331;
+  border: 0.5px solid #00000075;
 }
 </style>
