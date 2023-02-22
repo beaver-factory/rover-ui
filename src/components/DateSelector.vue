@@ -92,11 +92,24 @@ const highlightDate = (newDate: Date): string => {
 .dp__instance_calendar > div > div {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  width: calc(2 * var(--unit) - 2 * var(--padding));
   height: calc(2 * var(--unit) - 2 * var(--padding));
 }
 .dp__calendar_row {
   margin: 0;
+  width: 100%;
+}
+
+.dp__calendar_wrap {
+  width: 100%;
+}
+
+.dp__instance_calendar > div > div > .dp__calendar {
+  width: calc(2 * var(--unit) - 2 * var(--padding));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .dp__calendar_wrap > .dp__calendar {
@@ -104,18 +117,27 @@ const highlightDate = (newDate: Date): string => {
   flex-direction: column;
   justify-content: space-evenly;
   height: calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.7);
+  width: calc(2 * var(--unit) - 2 * var(--padding));
+}
+
+.dp__calendar_item {
+  display: flex;
+  flex-grow: unset;
+  justify-content: space-evenly;
+  width: calc(2 * var(--unit) - 2 * var(--padding));
 }
 
 .dp__calendar_header {
   padding-top: 0.5vh;
   padding-bottom: 0.2vh;
+  width: 100%;
 }
 .dp__cell_inner,
 .dp__calendar_header_item {
-  height: auto;
+  height: calc(calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.7) / 7);
   padding: 0;
-  width: calc(calc(2 * var(--unit) - 2 * var(--padding)) / 7);
-  font-size: 1.2vh;
+  width: calc(calc(calc(2 * var(--unit) - 2 * var(--padding)) * 0.7) / 7);
+  font-size: 1.3vh;
   color: var(--primary-font-color);
 }
 /* MONTH YEAR NAV BAR STYLING */
@@ -129,6 +151,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__inner_nav > .dp__icon {
   stroke: var(--primary-font-color);
   fill: var(--primary-font-color);
+  height: 2vh;
 }
 
 .dp__inner_nav > .dp__icon:hover {
@@ -149,8 +172,10 @@ const highlightDate = (newDate: Date): string => {
   color: var(--primary-font-color);
   font-size: 1.5vh;
   height: 100%;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding-top: 0.3vh;
+  padding-bottom: 0.3vh;
+  /* height: 3vh;
+  width: 3vh; */
   border-radius: 0;
   transition: 0.3s;
 }
@@ -175,7 +200,7 @@ const highlightDate = (newDate: Date): string => {
 .dp__active_date,
 .dp__overlay_cell_active {
   background: var(--selected-color);
-  border: var(--border);
+  /* border: var(--border); */
 }
 
 .dp__overlay_cell:hover,
