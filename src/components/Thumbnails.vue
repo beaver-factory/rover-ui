@@ -11,7 +11,6 @@
       :key="i"
       :class="{ selected: i == photoIndex }"
       :background-color="''"
-      :border-top="true"
       :border-right="true"
       :padding-units="0.5"
       @click="roverStore.setIndex(i)"
@@ -39,6 +38,7 @@ const { photoIndex, photosLoading } = storeToRefs(roverStore)
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  align-content: flex-start;
   overflow-x: scroll;
 }
 
