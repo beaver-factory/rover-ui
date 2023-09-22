@@ -9,8 +9,6 @@ on:
       - main
   workflow_dispatch:
 
-permissions:
-
 jobs:
   ci:
     runs-on: ubuntu-latest
