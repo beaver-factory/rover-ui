@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  VITE_NASA_KEY: ${{ secrets.VITE_NASA_KEY }}
+
 jobs:
   ci:
     runs-on: ubuntu-latest
@@ -52,4 +55,3 @@ jobs:
           build_dir: dist
         env:
           GITHUB_TOKEN: ${{ secrets.BEAVER_GITHUB_TOKEN }}
-          VITE_NASA_KEY: ${{ secrets.VITE_NASA_KEY }}
