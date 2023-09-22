@@ -22,7 +22,26 @@ jobs:
         run: npm install
 
       - name: Prettier
-        run: npx prettier --check **/*.{ts,vue,json,html,md,css}
+        run: npx prettier --check **/*.{ts,vue,json,html,md,css} --ignore dist/
 
       - name: Linting
         run: npm run lint
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: ci
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Install
+        run: npm install
+
+      - name: Build
+        run: npx vite build
+
+      - name: Deploy
+        run: npx gh-pages -d dist
