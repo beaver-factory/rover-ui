@@ -16,20 +16,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
-          # This is important to fetch the changes to the previous commit
-          fetch-depth: 0
 
       - name: Install
         run: npm install
 
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.3
-        with:
-          # This part is also where you can pass other options, for example:
-          prettier_options: --check **/*.{ts,vue,json,html,md,css}
-          only_changed: True
+      - name: Prettier
+        run: npm run prettier --check **/*.{ts,vue,json,html,md,css}
 
       - name: Linting
         run: npm run lint
