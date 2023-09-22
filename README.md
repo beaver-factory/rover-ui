@@ -30,3 +30,9 @@ npm run lint:fix
 Any errors remaining after this command will have to be resolved manually.
 
 These linting commands are also part of the CI workflow found in `.github/workflows/main.yaml` and any errors will cause the GitHub Action to fail. For the action to pass, use the two commands above to resolve the linting errors locally and try again.
+
+### Hosting
+
+This app is hosted using GitHub Pages within the beaver-factory organisation.
+
+The hosted version can be found [here.](https://beaver-factory.github.io/rover-ui/)
