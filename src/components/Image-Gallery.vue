@@ -55,10 +55,10 @@ const loaded: ComputedRef<boolean> = computed(
 const imgLoaded: ComputedRef<string> = computed((): string => {
   if (roverStore.photos[0]) {
     return roverStore.photosLoading
-      ? '/loading_img.jpeg'
+      ? '/rover-ui/loading_img.jpeg'
       : roverStore.photos[roverStore.photoIndex].img_src
   }
-  return '/loading_img.jpeg'
+  return '/rover-ui/loading_img.jpeg'
 })
 
 const camLoaded: ComputedRef<string> = computed((): string => {

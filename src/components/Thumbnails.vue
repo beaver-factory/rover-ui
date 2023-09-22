@@ -17,7 +17,7 @@
     >
       <img
         class="thumbnail-img"
-        :src="photosLoading ? '/loading_img.jpeg' : photo.img_src"
+        :src="photosLoading ? '/rover-ui/loading_img.jpeg' : photo.img_src"
         :alt="`a photo taken on ${photo.earth_date} by the ${photo.camera} camera on the ${photo.rover.name} rover`"
       />
     </BaseUnit>
