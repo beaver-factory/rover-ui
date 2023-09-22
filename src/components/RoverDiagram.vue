@@ -27,8 +27,8 @@ const roverStore = useRoverStore()
 
 const selectedRoverDiagram: ComputedRef<string> = computed((): string =>
   formStore.selectedRover === 'Curiosity'
-    ? 'src/assets/curiosity.png'
-    : 'src/assets/spirit-opportunity.png'
+    ? '/curiosity.png'
+    : '/spirit-opportunity.png'
 )
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <BaseUnit :width="'100vw'" :border-bottom="true">
     <div class="logo-container">
-      <img class="banner-logo" src="../assets/r2-logo.png" />
+      <!-- <img class="banner-logo" src="../assets/r2-logo.png" /> -->
     </div>
   </BaseUnit>
 </template>
